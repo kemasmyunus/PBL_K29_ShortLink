@@ -2,6 +2,8 @@
 
 @extends('layouts.main')
 @section('container')
+<div class="card">
+    <div class="card-header">
         <table class="table table-bordered">
             <thead>
                  <tr>
@@ -20,4 +22,6 @@
                 @endforeach
             </tbody>
         </table>
-        @endsection
+    </div>
+</div>
+@endsection
