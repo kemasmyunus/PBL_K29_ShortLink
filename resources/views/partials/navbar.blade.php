@@ -10,15 +10,15 @@
   <!-- Right navbar links -->
   <ul class="navbar-nav ml-auto">
     <!-- Notifications Dropdown Menu -->
-    <li class="nav-item dropdown">
+    <li class="nav-item">
       <a class="nav-link" data-toggle="dropdown" href="#">
-          <img src="img/user/user1.jpg" class="img-circle" alt="User Image" width="25px">  Username
+          <img src="img/user/user1.jpg" class="img-circle" alt="User Image" width="25px"> {{ auth()->user()->name }}
       </a>
       <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-        <div class="dropdown"></div>
-        <a href="#" class="dropdown-item">
-          <i class="fas fa-solid fa-sign-out-alt"></i> keluar
-        </a>
+        <form action="/logout" method="POST">
+          @csrf
+          <button type="submit" class="dropdown-item"><i class="fas fa-solid fa-sign-out-alt"></i> keluar</button>
+        </form>
       </div>
     </li>
   </ul>
