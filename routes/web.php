@@ -16,25 +16,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/login', [LoginController::class, 'index']);
+Route::get('/login', [LoginController::class, 'index'])->middleware('guest')->name('login');
+Route::post('/login', [LoginController::class, 'authenticate']);
+Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
 
-Route::get('/register', [RegisterController::class, 'index']);
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/input');
 });
 
 Route::get('/input', function () {
     return view('input',[
         "title" => "Bantuan"
-    ]);
+    ])->middleware('auth');
 });
-Route::get('input',[TautanController::class, 'index']);
+Route::get('input',[TautanController::class, 'index'])->middleware('auth');
 Route::post('input',[TautanController::class, 'store'])->name('generate.shorten.link.post');
-Route::get('tampil', [TautanController::class, 'showData'])->name('tampil');
-Route::get('bantuan', [TautanController::class, 'bantuan'])->name('bantuan');
-Route::get('{code}', [TautanController::class, 'shortenlink'])->name('shorten.link');
+Route::get('tampil', [TautanController::class, 'showData'])->name('tampil')->middleware('auth');
+Route::get('bantuan', [TautanController::class, 'bantuan'])->name('bantuan')->middleware('auth');
+Route::get('{code}', [TautanController::class, 'shortenlink'])->name('shorten.link')->middleware('auth');
 Route::get('bantuan',function(){
     $blog_posts = [
         [
@@ -66,5 +68,5 @@ Route::get('bantuan',function(){
         "title" => "Bantuan",
         "posts" => $blog_posts
     ]);
-});
+})->middleware('auth');
 
