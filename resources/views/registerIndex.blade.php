@@ -18,18 +18,18 @@
               <form action="/register" method="POST">
                 @csrf
                 <div class="form-floating">
-                  <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Name" required value="{{ old('name') }}">
-                  <label for="name">Name</label>
-                  @error('name')
+                  <input type="text" name="fullname" class="form-control @error('fullname') is-invalid @enderror" id="fullname" placeholder="FullName" required value="{{ old('fullname') }}">
+                  <label for="name">fullName</label>
+                  @error('fullname')
                     <div class="invalid-feedback">
                       {{ $message }}
                     </div>
                   @enderror
                 </div>
                 <div class="form-floating" style="margin-top: 5px">
-                  <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="name@example.com" required value="{{ old('email') }}">
-                  <label for="email">Email address</label>
-                  @error('email')
+                  <input type="username" name="username" class="form-control @error('username') is-invalid @enderror" id="username" placeholder="username" required value="{{ old('username') }}">
+                  <label for="email">username</label>
+                  @error('username')
                     <div class="invalid-feedback">
                       {{ $message }}
                     </div>

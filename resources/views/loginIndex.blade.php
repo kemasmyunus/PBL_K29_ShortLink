@@ -33,9 +33,9 @@
               <form action="/login" method="POST">
                   @csrf
                 <div class="form-floating">
-                  <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="name@example.com" autofocus required value="{{ old('email') }}">
-                  <label for="email">Email address</label>
-                  @error('email')
+                  <input type="text" name="username" class="form-control @error('username') is-invalid @enderror" id="username" placeholder="username" autofocus required value="{{ old('username') }}">
+                  <label for="username">username</label>
+                  @error('username')
                   <div class="invalid-feedback">
                     {{ $message }}
                   </div>

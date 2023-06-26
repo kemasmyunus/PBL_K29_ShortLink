@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\TautanController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\RegisterController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ShortLinkController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,57 +16,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/login', [LoginController::class, 'index'])->middleware('guest')->name('login');
-Route::post('/login', [LoginController::class, 'authenticate']);
-Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
-
-Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
-Route::post('/register', [RegisterController::class, 'store']);
-
 Route::get('/', function () {
-    return redirect('/input');
+    return view('welcome');
 });
 
-Route::get('/input', function () {
-    return view('input',[
-        "title" => "Bantuan"
-    ])->middleware('auth');
-});
-Route::get('input',[TautanController::class, 'index'])->middleware('auth');
-Route::post('input',[TautanController::class, 'store'])->name('generate.shorten.link.post');
-Route::get('tampil', [TautanController::class, 'showData'])->name('tampil')->middleware('auth');
-Route::get('bantuan', [TautanController::class, 'bantuan'])->name('bantuan')->middleware('auth');
-Route::get('{code}', [TautanController::class, 'shortenlink'])->name('shorten.link')->middleware('auth');
-Route::get('bantuan',function(){
-    $blog_posts = [
-        [
-            "title" => "Judul Post Pertama",
-            "author" => "Kemas M. Yunus",
-            "body" => "Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-            Voluptatum repellendus aliquam fugiat molestias ipsum, labore ad minus
-            deleniti qui obcaecati accusantium porro et unde, officiis id nemo reiciendis
-            praesentium corrupti exercitationem? Fugiat aliquam similique nesciunt dolorem
-            cupiditate! Exercitationem explicabo cum earum, nesciunt tempore dolor alias
-            esse molestiae unde et necessitatibus? Quia at excepturi eveniet, optio unde iste?
-            Itaque repudiandae beatae nobis molestiae! Ipsa, cupiditate omnis? Tempore omnis
-            cum autem fugit explicabo voluptas, architecto beatae? Culpa itaque quod dolore]
-            aperiam temporibus."
-        ],
-        [
-            "title" => "Judul Post Kedua",
-            "author" => "Kemas M. Yunus",
-            "body" => "Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-            Voluptatum repellendus aliquam fugiat molestias ipsum, labore ad minus
-            deleniti qui obcaecati accusantium porro et unde, officiis id nemo reiciendis
-            praesentium corrupti exercitationem? Fugiat aliquam similique nesciunt dolorem
-            cupiditate! Exercitationem explicabo cum earum, nesciunt tempore dolor alias
-            esse molestiae unde et necessitatibus? Quia at excepturi eveniet, optio unde iste?
-            aperiam temporibus."
-        ]
-    ];
-    return view('bantuan', [
-        "title" => "Bantuan",
-        "posts" => $blog_posts
-    ]);
-})->middleware('auth');
+Auth::routes();
 
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
+Route::get('/home',[ShortLinkController::class, 'index']);
+Route::post('/home',[ShortLinkController::class, 'store'])->name('generate.shorten.link.post');
+Route::get('{code}', [ShortLinkController::class, 'shortenlink'])->name('shorten.link');

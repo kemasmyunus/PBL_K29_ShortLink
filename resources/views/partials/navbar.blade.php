@@ -9,16 +9,19 @@
 
   <!-- Right navbar links -->
   <ul class="navbar-nav ml-auto">
-    <!-- Notifications Dropdown Menu -->
-    <li class="nav-item">
-      <a class="nav-link" data-toggle="dropdown" href="#">
-          <img src="img/user/user1.jpg" class="img-circle" alt="User Image" width="25px"> {{ auth()->user()->name }}
-      </a>
-      <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-        <form action="/logout" method="POST">
-          @csrf
-          <button type="submit" class="dropdown-item"><i class="fas fa-solid fa-sign-out-alt"></i> keluar</button>
-        </form>
+    <!-- Dropdown Logout menu -->
+  
+    
+      <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{{ route('logout') }}"
+             onclick="event.preventDefault();
+                           document.getElementById('logout-form').submit();">
+              {{ __('Logout') }}
+          </a>
+    
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+              @csrf
+          </form>
       </div>
     </li>
   </ul>
