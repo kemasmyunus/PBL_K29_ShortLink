@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Str;
+use App\Models\User;
 use App\Models\ShortLink;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -13,9 +14,11 @@ class ShortLinkController extends Controller
     public function index()
     {
         // memasukkan data dari model ShortLink kedalam variabel $shortLinks
-        $shortLinks = ShortLink::latest()->get();
+        // laravel queri
+
+        $links = ShortLink::latest()->get();
         // kembali ke view "home" dengan membawa data yang dimasukkan kedalam variabel shortLinks
-        return view('home', compact('shortLinks'));
+        return view('home', compact('links'));
     }
     
     public function store(Request $request)
@@ -24,6 +27,8 @@ class ShortLinkController extends Controller
             'link' => 'required|url'
         ]);
 
+        $input['user_id']=$request->user_id;
+        $input['user_username']=$request->user_username;
         // variabel link = link sebelum dipendekkan
         $input['link'] = $request->link;
 
@@ -65,4 +70,5 @@ class ShortLinkController extends Controller
             return redirect($find->link);
         }
     }
+
 }

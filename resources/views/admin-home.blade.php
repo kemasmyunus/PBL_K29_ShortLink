@@ -20,34 +20,13 @@
                         <h2>Wellcome to the Admin Dashboard</h2>
                         {{ __('You are logged in!') }}
                         <div class="container mt-5">
-                            @if(session('success'))
-                            <div class="alert alert-success">{{ session ('success') }}</div>
-                            @endif
-                            <div class="card">
-                                <div class="card-header">
-                                    <h1>Form Pemendek Tautan</h1>
-                                </div>
-                                <div class="card-body">
-                                    <form method="post" action="{{ route('generate.shorten.link.post') }}">
-                                    @csrf
-                                    <div class="input-group mb-3">
-                                        <input type="text" name="link" class="form-control" placeholder="Masukkan Tautan">
-                                    </div>
-                                    <div class="input-group mb-3">
-                                        <input type="text" name="code" class="form-control" placeholder="Masukkan Tautan Kustom (Opsional)">
-                                    </div>
-                                    <div class="input-group mb-3">
-                                        <input type="text" name="judul" class="form-control" placeholder="Masukkan Judul Tautan (Opsional)">
 
-                                        <div class="input-group-addon">
-                                            <button class="btn btn-success">Generate Shorten Link</button>
-                                        </div>
-                                    </div>
-                                    @error('link') <p class="m-0 p-0 text text-danger"> {{ $message }}</p>@enderror
-                                    </form>
-                                </div>
-                            </div>
+
+                            <!-- tabel shortlink -->
                             <div class="card mt-5">
+                                <?php
+                                use App\Models\ShortLink;
+                                $links = ShortLink::latest()->get();?>
                                 <div class="card-header">
                                     <h1>Table Hasil Shortlink</h1>
                                 </div>
@@ -55,17 +34,48 @@
                                     <table class="table table-bordered">
                                         <thead>
                                             <tr>
+
                                                 <th>Judul</th>
                                                 <th>Short Link</th>
                                                 <th>Link</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($shortLinks as $row)
+                                            @foreach ($links as $row)
                                             <tr>
                                                 <td>{{ $row->judul }}</td>
                                                 <td><a href="{{ route('shorten.link',$row->code) }}" target="_blank">{{ route('shorten.link',$row->code) }}</a></td>
                                                 <td>{{ $row->link }}</td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- tabel user -->
+                            <div class="card mt-5">
+                                <?php
+                                use App\Models\User;
+                                $users = User::latest()->get();?>
+                                <div class="card-header">
+                                    <h1>Table Hasil Shortlink</h1>
+                                </div>
+                                <div class="card-body">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>User Id</th>
+                                                <th>Username</th>
+                                                <th>Full name</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($users as $row)
+                                            <tr>
+                                                <td>{{ $row->id }}</td>
+                                                <td>{{ $row->username }}</td>
+                                                <td>{{ $row->fullname }}</td>
                                             </tr>
                                             @endforeach
                                         </tbody>

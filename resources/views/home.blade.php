@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-18">
@@ -18,6 +19,7 @@
                         @endif
                         
                         <h2>Wellcome to the User Dashboard</h2>
+
                         {{ __('You are logged in!') }}
                         <div class="container mt-5">
                             @if(session('success'))
@@ -30,6 +32,15 @@
                                 <div class="card-body">
                                     <form method="post" action="{{ route('generate.shorten.link.post') }}">
                                     @csrf
+                                    <!-- form data yang disembunyikan -->
+                                    <div class="input-group mb-3">
+                                        <input type="hidden" name="user_id" class="form-control" value="{{ Auth::user()->id }}">
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <input type="hidden" name="user_username" class="form-control" value="{{ Auth::user()->username }}">
+                                    </div>
+
+                                    <!-- form data yang ditampilkan -->
                                     <div class="input-group mb-3">
                                         <input type="text" name="link" class="form-control" placeholder="Masukkan Tautan">
                                     </div>
@@ -61,13 +72,26 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($shortLinks as $row)
-                                            <tr>
-                                                <td>{{ $row->judul }}</td>
-                                                <td><a href="{{ route('shorten.link',$row->code) }}" target="_blank">{{ route('shorten.link',$row->code) }}</a></td>
-                                                <td>{{ $row->link }}</td>
-                                            </tr>
-                                            @endforeach
+                                            @foreach ($links as $row)
+                                            <!-- jika id yang sedang aktif sama dengan user_id -->
+                                                @if (Auth::user()->id == $row->user_id)
+                                                <!-- cetak -->
+                                                    <tr>
+                                                        <td>{{ $row->judul }}</td>
+                                                        <td><a href="{{ route('shorten.link', $row->code) }}" target="_blank">{{ route('shorten.link', $row->code) }}</a></td>
+                                                        <td>{{ $row->link }}</td>
+                                                        @if (empty(Auth::user()->id == $row->user_id))
+                                                        
+                                                            <td colspan="4">
+                                                                data kosong
+                                                            </td>
+                                                        
+                                                        @endif
+                                                    </tr>
+                                                    @endif
+
+                                                
+                                                @endforeach
                                         </tbody>
                                     </table>
                                 </div>

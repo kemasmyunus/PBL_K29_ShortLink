@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ShortLinkController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,8 +23,14 @@ Route::get('/', function () {
 
 Auth::routes();
 
+
+// home
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
 Route::get('/home',[ShortLinkController::class, 'index']);
 Route::post('/home',[ShortLinkController::class, 'store'])->name('generate.shorten.link.post');
+
+// admin
+Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
+
+// code
 Route::get('{code}', [ShortLinkController::class, 'shortenlink'])->name('shorten.link');

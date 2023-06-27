@@ -18,11 +18,16 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
+        'username',
+        'fullname',
         'password',
         'is_admin'
     ];
+
+    // membuat relasi dengan model Shortlink
+    public function links(){
+        return $this->hasMany(ShortLink::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.

@@ -42,10 +42,10 @@ class LoginController extends Controller
     public function login(Request $request){
         $input = $request->all();
         $this->validate($request, [
-            'email' => 'required',
+            'username' => 'required',
             'password' => 'required'
         ]);
-        if(auth()->attempt(array('email'=>$input['email'],'password'=>$input['password']))){
+        if(auth()->attempt(array('username'=>$input['username'],'password'=>$input['password']))){
             if(auth()->user()->is_admin==1){
                 return redirect('admin/home');
             }else{

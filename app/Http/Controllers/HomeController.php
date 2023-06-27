@@ -29,9 +29,6 @@ class HomeController extends Controller
     }
 
     public function adminHome(){
-        // mengambil data sari model ShortLink :: mengambil data terakhir -> method get
-        $shortLinks = ShortLink::latest()->get();
-        // kembalikan ke view "admin-home" kedalam variabel shortLinks
-        return view('admin-home', compact('shortLinks'));
+        return view('admin-home');
     }
 }

@@ -9,5 +9,11 @@ class ShortLink extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['code', 'judul', 'link'];
+    protected $fillable = ['user_id', 'user_username', 'code', 'judul', 'link'];
+
+    // untuk menghubungkan dengan tabel user
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
 }
