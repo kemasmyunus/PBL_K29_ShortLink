@@ -34,7 +34,7 @@
                                     <table class="table table-bordered">
                                         <thead>
                                             <tr>
-
+                                                <th>User</th>
                                                 <th>Judul</th>
                                                 <th>Short Link</th>
                                                 <th>Link</th>
@@ -43,6 +43,7 @@
                                         <tbody>
                                             @foreach ($links as $row)
                                             <tr>
+                                                <td>{{ $row->user_username }}</td>
                                                 <td>{{ $row->judul }}</td>
                                                 <td><a href="{{ route('shorten.link',$row->code) }}" target="_blank">{{ route('shorten.link',$row->code) }}</a></td>
                                                 <td>{{ $row->link }}</td>
