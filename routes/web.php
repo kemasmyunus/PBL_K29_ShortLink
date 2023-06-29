@@ -21,6 +21,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/coba', function () {
+    return view('auth/login2');
+});
+
 Auth::routes();
 
 
