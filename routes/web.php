@@ -25,6 +25,7 @@ Route::get('/', function () {
 //crud
 Route::get('/ubah/{id}',[ShortLinkController::class, 'ubah'])->name('user.ubah');
 Route::put('/update/{id}',[ShortLinkController::class, 'update'])->name('user.update');
+Route::get('/delete/{id}',[ShortLinkController::class, 'delete'])->name('user.delete');
 
 
 Auth::routes();

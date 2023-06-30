@@ -137,7 +137,13 @@
                                             Edit
                                             </button>
                                         </a>                               
-                                        <button class="btn btn-danger">hapus</button>
+                                        <a href="#">
+                                            <button class="btn btn-danger" onclick="hapus({{ $row->id }}, '{{ $row->judul }}')">hapus</button>
+                                          </a>
+                                          
+
+                                          
+
                                     </td>
                                 </tr>
                             @endif
@@ -284,4 +290,18 @@
         
         
 
+                                          <!-- SCRIPT Hapus -->
+                                          <script>
+                                            function hapus(id, judul) {
+                                            var urlhapus = "/delete/"+id;
+                                            var urlbalik = "/home";
+                                              var konfirmasi = confirm("Apakah Anda yakin ingin menghapus data "+judul+"?");
+                                          
+                                              if (konfirmasi) {
+                                                window.location.href = urlhapus;
+                                            } else {
+                                                window.location.href = urlbalik;
+                                              }
+                                            }
+                                          </script>
 @endsection

@@ -113,4 +113,13 @@ class ShortLinkController extends Controller
         // kembali ke alamat "home" dengan pesan sukses
         return redirect('home')->withSuccess('Shorten Link Generated Successfully');
     }
+
+    public function delete(Request $request, $id){
+        $hapus = ShortLink::find($id);
+        if($hapus){
+            $hapus->delete();
+        }
+
+        return redirect('home');
+    }
 }
