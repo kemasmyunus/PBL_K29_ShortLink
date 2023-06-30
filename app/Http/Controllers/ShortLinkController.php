@@ -24,7 +24,8 @@ class ShortLinkController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'link' => 'required|url'
+            'link' => 'required|url',
+            'code' => 'unique:short_links'
         ]);
 
         $input['user_id']=$request->user_id;
@@ -57,7 +58,7 @@ class ShortLinkController extends Controller
         // memasukkan data baru kedalam model ShortLink dengan $input
         ShortLink::create($input);
         // kembali ke alamat "home" dengan pesan sukses
-        return redirect('home')->withSuccess('Shorten Link Generated Successfully');
+        return redirect('home')->withSuccess('Tautan Pendek Berhasil Dibuat');
     }
     public function shortenlink($code)
     {
@@ -78,7 +79,8 @@ class ShortLinkController extends Controller
 
     public function update(Request $request, $id){
         $request->validate([
-            'link' => 'required|url'
+            'link' => 'required|url',
+            'code' => 'unique:short_links'
         ]);
 
         $input['user_id']=$request->user_id;
@@ -111,7 +113,7 @@ class ShortLinkController extends Controller
         // memasukkan data baru kedalam model ShortLink dengan $input
         ShortLink::whereId($id)->update($input);
         // kembali ke alamat "home" dengan pesan sukses
-        return redirect('home')->withSuccess('Shorten Link Generated Successfully');
+        return redirect('home')->withSuccess('Tautan Pendek Berhasil Diubah');
     }
 
     public function delete(Request $request, $id){
@@ -120,6 +122,6 @@ class ShortLinkController extends Controller
             $hapus->delete();
         }
 
-        return redirect('home');
+        return redirect('home')->withSuccess('Tautan Pendek Berhasil Dihapus');
     }
 }
