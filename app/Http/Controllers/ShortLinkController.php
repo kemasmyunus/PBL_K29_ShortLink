@@ -125,4 +125,12 @@ class ShortLinkController extends Controller
 
         return redirect('home')->withSuccess('Tautan Pendek Berhasil Dihapus');
     }
+    public function admindelete(Request $request, $id){
+        $hapus = ShortLink::find($id);
+        if($hapus){
+            $hapus->delete();
+        }
+
+        return redirect('adminhome')->withSuccess('Tautan Pendek Berhasil Dihapus');
+    }
 }

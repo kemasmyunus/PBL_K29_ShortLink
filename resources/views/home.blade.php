@@ -158,7 +158,7 @@
                         
                         @if (!$dataFound)
                             <tr>
-                                <td colspan="3">
+                                <td colspan="4">
                                     data kosong
                                 </td>
                             </tr>
@@ -300,7 +300,7 @@
                                           <!-- SCRIPT Hapus -->
                                           <script>
                                             function hapus(id, judul) {
-                                            var urlhapus = "/delete/"+id;
+                                            var urlhapus = "/delete"+id;
                                             var urlbalik = "#top";
                                               var konfirmasi = confirm("Apakah Anda yakin ingin menghapus data "+judul+"?");
                                           

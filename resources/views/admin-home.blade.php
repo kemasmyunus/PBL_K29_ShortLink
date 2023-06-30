@@ -26,6 +26,9 @@
 
             <div class="card">
                 <h2>Selamat datang di halaman <em>admin</em></h2>
+                @if(session('success'))
+                <div class="alert alert-success">{{ session ('success') }}</div>
+                @endif
             </div>
         </div>
 
@@ -44,37 +47,64 @@
                     <?php
                     use App\Models\Shortlink;
                     $links = ShortLink::latest()->get();?>
-                        <table>
-                            <thead>
+                    <table>
+                        <thead>
+                            <style>
+                                tr{
+                                    color: white;
+                                }
+                            </style>
+                            <tr>
+                                <th>Id</th>
+                                <th>Username</th>
+                                <th>Judul</th>
+                                <th>Short Link</th>
+                                <th>Link</th>
+                                <th></th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+
+
+                            @php
+                            $dataFound = false;
+                        @endphp
+                        
+                        @foreach ($links as $row)
+                                @php
+                                    $dataFound = true;
+                                @endphp
                                 <tr>
-                                    <style>
-                                        th{
-                                            color: white
-                                        }
-                                    </style>
-                                    <th>User</th>
-                                    <th>Judul</th>
-                                    <th>Short Link</th>
-                                    <th>Link</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($links as $row)
-                                <tr>
+                                    <td>{{ $row->user_id }}</td>
                                     <td>{{ $row->user_username }}</td>
                                     <td>{{ $row->judul }}</td>
-                                    <td><a href="{{ route('shorten.link',$row->code) }}" target="_blank">{{ route('shorten.link',$row->code) }}</a></td>
+                                    <td class="kode"><a href="{{ route('shorten.link', $row->code) }}" target="_blank">{{ route('shorten.link', $row->code) }}</a></td>
                                     <td>{{ $row->link }}</td>
                                     <td>
-                                        <button class="btn btn-primary copy-button" onclick="copyLink('{{ route('shorten.link', $row->code) }}')">Salin</button>
-                                        <button class="btn btn-success">ubah</button>
-                                        <button class="btn btn-danger">hapus</button>
+                                        <button class="btn btn-primary copy-button" onclick="copyLink('{{ route('shorten.link', $row->code) }}')">Salin</button>                              
+                                        <a href="#">
+                                            <button class="btn btn-danger" onclick="hapus({{ $row->id }}, '{{ $row->judul }}')">hapus</button>
+                                          </a>
+                                          
+
+                                          
+
                                     </td>
                                 </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                        @endforeach
+                        
+                        @if (!$dataFound)
+                            <tr>
+                                <td colspan="4">
+                                    data kosong
+                                </td>
+                            </tr>
+                        @endif
+                        
+
+                        </tbody>
+                    </table>
 
 
 
@@ -249,5 +279,17 @@
                 alert("Link berhasil disalin!");
             }
         </script>
-
+                                       <script>
+                                        function hapus(id, judul) {
+                                        var urlhapus = "/admindelete"+id;
+                                        var urlbalik = "#top";
+                                          var konfirmasi = confirm("Apakah Anda yakin ingin menghapus data "+judul+"?");
+                                      
+                                          if (konfirmasi) {
+                                            window.location.href = urlhapus;
+                                        } else {
+                                            window.location.href = urlbalik;
+                                          }
+                                        }
+                                      </script>
 @endsection

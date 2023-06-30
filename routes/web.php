@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ShortLinkController;
 use App\Http\Controllers\UserController;
 use App\Models\ShortLink;
+use Psy\Command\EditCommand;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +25,14 @@ Route::get('/', function () {
 });
 
 //crud
+//ubah user
 Route::get('/ubah{id}',[ShortLinkController::class, 'ubah'])->name('user.ubah');
 Route::put('/update{id}',[ShortLinkController::class, 'update'])->name('user.update');
 Route::get('/delete{id}',[ShortLinkController::class, 'delete'])->name('user.delete');
+Route::get('/admindelete{id}',[ShortLinkController::class, 'admindelete'])->name('admin.delete');
+//ubah password
+Route::get('/passwordubah{id}',[EditUserController::class, 'ubahpassword'])->name('ubahpassword');
+Route::put('/passwordupdate{id}',[EditUserController::class, 'updatepassword'])->name('updatepassword');
 
 
 Route::get('/useredit{id}',[EditUserController::class, 'edit'])->name('editprofil');
