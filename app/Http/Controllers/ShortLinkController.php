@@ -71,6 +71,7 @@ class ShortLinkController extends Controller
             return redirect($find->link);
         }
     }
+    
     public function ubah(Request $request, $id)
     {
         $tautan = ShortLink::find($id);

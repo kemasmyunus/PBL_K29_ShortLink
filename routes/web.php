@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EditUserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -23,9 +24,13 @@ Route::get('/', function () {
 });
 
 //crud
-Route::get('/ubah/{id}',[ShortLinkController::class, 'ubah'])->name('user.ubah');
-Route::put('/update/{id}',[ShortLinkController::class, 'update'])->name('user.update');
-Route::get('/delete/{id}',[ShortLinkController::class, 'delete'])->name('user.delete');
+Route::get('/ubah{id}',[ShortLinkController::class, 'ubah'])->name('user.ubah');
+Route::put('/update{id}',[ShortLinkController::class, 'update'])->name('user.update');
+Route::get('/delete{id}',[ShortLinkController::class, 'delete'])->name('user.delete');
+
+
+Route::get('/useredit{id}',[EditUserController::class, 'edit'])->name('editprofil');
+Route::put('/userupdate{id}',[EditUserController::class, 'update'])->name('updateprofil');
 
 
 Auth::routes();
@@ -37,7 +42,7 @@ Route::get('/home',[ShortLinkController::class, 'index']);
 Route::post('/home',[ShortLinkController::class, 'store'])->name('generate.shorten.link.post');
 
 // admin
-Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
+Route::get('/adminhome', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
 
 // code
 Route::get('{code}', [ShortLinkController::class, 'shortenlink'])->name('shorten.link');
