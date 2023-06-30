@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ShortLinkController;
 use App\Http\Controllers\UserController;
+use App\Models\ShortLink;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,9 +22,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/coba', function () {
-    return view('auth/login2');
-});
+//crud
+Route::get('/ubah/{id}',[ShortLinkController::class, 'ubah'])->name('user.ubah');
+Route::put('/update/{id}',[ShortLinkController::class, 'update'])->name('user.update');
+
 
 Auth::routes();
 

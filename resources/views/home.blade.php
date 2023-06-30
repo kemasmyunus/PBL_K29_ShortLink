@@ -132,7 +132,11 @@
                                     <td>{{ $row->link }}</td>
                                     <td>
                                         <button class="btn btn-primary copy-button" onclick="copyLink('{{ route('shorten.link', $row->code) }}')">Salin</button>
-                                        <button class="btn btn-success">ubah</button>
+                                        <a href="{{ route('user.ubah',['id' => $row->id]) }}">
+                                        <button class="btn btn-success">
+                                            Edit
+                                            </button>
+                                        </a>                               
                                         <button class="btn btn-danger">hapus</button>
                                     </td>
                                 </tr>
