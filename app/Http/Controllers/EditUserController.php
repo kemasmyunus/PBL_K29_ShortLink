@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class EditUserController extends Controller
@@ -49,4 +50,38 @@ class EditUserController extends Controller
         // kembali ke alamat "home" dengan pesan sukses
         return redirect('home')->withSuccess('Profil Berhasil Diubah');
     }
+
+
+
+
+    public function authedit()
+    {
+        return view('authedit');
+    }
+
+    public function authupdate(Request $request)
+    {
+        $request->validate([
+            'username' => ['required', 'string', 'max:255'],
+            'fullname' => ['required', 'string', 'max:255'],
+            'password' => ['required', 'string', 'min:8'],
+        ]);
+    
+        $user = User::where('username', $request->username)
+            ->where('fullname', $request->fullname)
+            ->first();
+    
+        if ($user) {
+            $user->username = $request->username;
+            $user->fullname = $request->fullname;
+            $user->password = bcrypt($request->password);
+            $user->save();
+    
+            // Kembali ke alamat "home" dengan pesan sukses
+            return redirect('/')->with('success', 'Profil Berhasil Diubah');
+        } else {
+            return redirect('/gagal');
+        }
+    }
+    
 }

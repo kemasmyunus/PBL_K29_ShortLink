@@ -35,9 +35,12 @@ Route::get('/passwordubah{id}',[EditUserController::class, 'ubahpassword'])->nam
 Route::put('/passwordupdate{id}',[EditUserController::class, 'updatepassword'])->name('updatepassword');
 
 
+Route::get('/authedit',[EditUserController::class, 'authedit'])->name('authedit');
+Route::put('/authupdate',[EditUserController::class, 'authupdate'])->name('authupdate');
+
+
 Route::get('/useredit{id}',[EditUserController::class, 'edit'])->name('editprofil');
 Route::put('/userupdate{id}',[EditUserController::class, 'update'])->name('updateprofil');
-
 
 Auth::routes();
 
