@@ -48,7 +48,7 @@ class EditUserController extends Controller
         // memasukkan data baru kedalam model ShortLink dengan $input
         User::whereId($id)->update($input);
         // kembali ke alamat "home" dengan pesan sukses
-        return redirect('home')->withSuccess('Profil Berhasil Diubah');
+        return redirect('home')->withSuccess('Password Berhasil Diubah');
     }
 
     public function authedit()

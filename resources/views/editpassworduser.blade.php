@@ -20,92 +20,92 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-18">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-                    <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-                        @if (session('error'))
-                            <div class="alert alert-danger" role="alert">
-                                {{ session('error') }}
-                            </div>
-                        @endif
-                        
-                        <h2>Wellcome to the User Dashboard</h2>
 
-                        {{ __('You are logged in!') }}
-                        <div class="container mt-5">
-                            @if(session('success'))
-                            <div class="alert alert-success">{{ session ('success') }}</div>
-                            @endif
-                            <div class="card">
-                                <div class="card-header">
-                                    <h1>Form Pemendek Tautan</h1>
-                                </div>
-                                <div class="card-body">
-                                    <form method="post" action="{{ route('updatepassword', ['id'=>$editpassworduser->id]) }}">
-                                    @csrf
-                                    @method('PUT')
+            <style>
+                .kotak{
+                    margin: 5rem auto;
+                    width: 50%;
+                    padding: 10px;  
+                }
 
-                                    <div class="input-group mb-3">             
-                       
-                                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Masukkan Password Anda">
-             
-                                             @error('password')
-                                                 <span class="invalid-feedback" role="alert">
-                                                     <strong>{{ $message }}</strong>
-                                                 </span>
-                                             @enderror
-                                   
-                                     </div>
-             
-                                    
-                     
-                        
+                .bg {
+                    /* Full height */                              
+                    /* Center and scale the image nicely */
+                    background-size: cover;
+                    widows: 300px;
+                  }
+                  .card{
+                    margin: 13px;
+                    padding: 30px
+                  }
+            </style>
+            <div class="bg">
+<div class="kotak">
 
-                                     <div class="input-group mb-3">             
+    <div class="card">
+        <div class="mb-2">
+
+            <h5>Halaman Ganti Password</h5>
+        </div>
+            <form method="post" action="{{ route('updatepassword', ['id'=>$editpassworduser->id]) }}">
+            @csrf
+            @method('PUT')
     
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Masukkan Ulang Password Anda">
-                            </div>
-
-
-
-
-
-
-
-
-
-
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-addon">
-                                            <button class="btn btn-success">Simpan</button>
-                                        </div>
-                                    </div>
-
-
-
-
-                                    
-                                    @error('link') <p class="m-0 p-0 text text-danger"> {{ $message }}</p>@enderror
-                                </form>
-                                <div class="input-group-addon">
-                                    <a href="/home">
-                                        <button class="btn btn-danger">Batal</button>
-                                    </a>
-                                </div>
-                                </div>
-                            </div>
-
-
- 
-
-                        </div>
-                    </div>
+            <div class="input-group mb-3">             
+                <p>Masukkan Password baru</p>
+                <div class="input-group">
+                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Masukkan Password Anda">
+                    
+                    @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>  
+             </div>
+    
+            
+    
+    
+    
+             <div class="input-group mb-3">             
+                <p>Masukkan lagi password anda</p>
+                <div class="input-group">
+                    
+                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Masukkan Ulang Password Anda">
                 </div>
+            </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+            <div class="input-group mb-3">
+                <div class="input-group-addon">
+                    <button class="btn btn-success">Simpan</button>
+                </div>
+            </div>
+    
+    
+    
+    
+            
+            @error('link') <p class="m-0 p-0 text text-danger"> {{ $message }}</p>@enderror
+            </form>
+            <div class="input-group-addon">
+                <a href="/home">
+                    <button class="btn btn-danger">Batal</button>
+                </a>
+            </div>
+    </div>
+    
+    </div>
+</div>
             </div>
         </div>
     </div>
