@@ -20,70 +20,67 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-18">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-                    <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-                        @if (session('error'))
-                            <div class="alert alert-danger" role="alert">
-                                {{ session('error') }}
-                            </div>
-                        @endif
-                        
-                        <h2>Wellcome to the User Dashboard</h2>
-
-                        {{ __('You are logged in!') }}
-                        <div class="container mt-5">
-                            @if(session('success'))
-                            <div class="alert alert-success">{{ session ('success') }}</div>
-                            @endif
-                            <div class="card">
-                                <div class="card-header">
-                                    <h1>Form Pemendek Tautan</h1>
-                                </div>
-                                <div class="card-body">
-                                    <form method="post" action="{{ route('updateprofil', ['id'=>$edituser->id]) }}">
-                                    @csrf
-                                    @method('PUT')
-                                    <div class="input-group mb-3">
-                                        <div class="input-group">
-                                            <input type="text" name="username" class="form-control" placeholder="Masukkan Tautan" value="{{ $edituser->username }}">
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="input-group mb-3">
-                                        <div class="input-group">
-                                            <input type="text" name="fullname" class="form-control" placeholder="Masukkan Tautan Kustom (Opsional)" value="{{ $edituser->fullname }}">
-                                        </div>
-                                    </div>
-                               
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-addon">
-                                            <button class="btn btn-success">Simpan</button>
-                                        </div>
-                                    </div>
-                                    
-                                    @error('link') <p class="m-0 p-0 text text-danger"> {{ $message }}</p>@enderror
-                                </form>
-                                <div class="input-group-addon">
-                                    <a href="/home">
-                                        <button class="btn btn-danger">Batal</button>
-                                    </a>
-                                </div>
-                                </div>
-                            </div>
 
 
+            <style>
+                .kotak{
+                    margin: 5rem auto;
+                    width: 50%;
+                    padding: 10px;  
+                }
 
+                .bg {
+                    /* Full height */                              
+                    /* Center and scale the image nicely */
+                    background-size: cover;
+                    widows: 300px;
+                  }
+                  .card{
+                    margin: 13px;
+                    padding: 30px
+                  }
+            </style>
+            <div class="bg">
+                <div class="kotak">                     
+                    <div class="card">
 
+                        <form method="post" action="{{ route('updateprofil', ['id'=>$edituser->id]) }}">
+                        @csrf
+                        @method('PUT')
+                        <div>
+                            <h5>Halaman Ubah Akun</h5>
                         </div>
-                    </div>
+                        <div class="input-group mb-3">
+                            <p>Masukkan Username</p>
+                            <div class="input-group">
+                                <input type="text" name="username" class="form-control" placeholder="Masukkan Username" value="{{ $edituser->username }}">
+                            </div>
+                        </div>
+                        
+                        <div class="input-group mb-3">
+                            <p>Masukkan Fullname</p>
+                            <div class="input-group">
+                                <input type="text" name="fullname" class="form-control" placeholder="Masukkan Fullname" value="{{ $edituser->fullname }}">
+                            </div>
+                        </div>
+                   
+                        <div class="input-group mb-3">
+                            <div class="input-group-addon">
+                                <button class="btn btn-success">Simpan</button>
+                            </div>
+                        </div>
+                        
+                        @error('link') <p class="m-0 p-0 text text-danger"> {{ $message }}</p>@enderror
+                        </form>
+                        <div class="input-group-addon">
+                            <a href="/home">
+                                <button class="btn btn-danger">Batal</button>
+                            </a>
+                        </div>
                 </div>
+                </div> 
             </div>
+
         </div>
     </div>
 </div>
