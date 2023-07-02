@@ -92,7 +92,11 @@
 
                                     <h5>Masuk ke akun anda</h5>
                                 </div>
-                                
+                                @if (session('error'))
+                                <div class="alert alert-danger" role="alert">
+                                    {{ "Username atau Password salah" }}
+                                </div>
+                            @endif
                                 @csrf
         
                                 <h6>{{ 'Username' }}</h6>
