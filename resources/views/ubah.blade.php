@@ -20,84 +20,86 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-18">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-                    <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-                        @if (session('error'))
-                            <div class="alert alert-danger" role="alert">
-                                {{ session('error') }}
-                            </div>
-                        @endif
-                        
-                        <h2>Wellcome to the User Dashboard</h2>
+            <style>
+                .kotak{
+                    margin: 5rem auto;
+                    width: 50%;
+                    padding: 10px;  
+                }
 
-                        {{ __('You are logged in!') }}
-                        <div class="container mt-5">
-                            @if(session('success'))
-                            <div class="alert alert-success">{{ session ('success') }}</div>
-                            @endif
-                            <div class="card">
-                                <div class="card-header">
-                                    <h1>Form Pemendek Tautan</h1>
+                .bg {
+                    /* Full height */                              
+                    /* Center and scale the image nicely */
+                    background-size: cover;
+                    widows: 300px;
+                  }
+                  .card{
+                    margin: 13px;
+                    padding: 30px
+                  }
+            </style>
+            <div class="bg">
+                <div class="kotak">                     
+                    <div class="card">
+                        <!-- Form -->
+                        <div class="card-body">
+                            <div class="mb-2">
+
+                                <h5>Ubah Tautan</h5>
+                            </div>
+                            <form method="post" action="{{ route('user.update', ['id'=>$tautan->id]) }}">
+                            @csrf
+                            @method('PUT')
+                            <!-- form data yang disembunyikan -->
+                            <div class="input-group">
+                                <input type="hidden" name="user_id" class="form-control" value="{{ Auth::user()->id }}">
+                            </div>
+                            <div class="input-group">
+                                <input type="hidden" name="user_username" class="form-control" value="{{ Auth::user()->username }}">
+                            </div>
+
+                            <!-- form data yang ditampilkan -->
+         
+
+                            <div class="input-group mb-3">
+                                <p>Masukkan Tautan</p>
+                                <div class="input-group">
+                                    <input type="text" name="link" class="form-control" placeholder="Masukkan Tautan" value="{{ $tautan->link }}">
                                 </div>
-                                <div class="card-body">
-                                    <form method="post" action="{{ route('user.update', ['id'=>$tautan->id]) }}">
-                                    @csrf
-                                    @method('PUT')
-                                    <!-- form data yang disembunyikan -->
-                                    <div class="input-group mb-3">
-                                        <input type="hidden" name="user_id" class="form-control" value="{{ Auth::user()->id }}">
-                                    </div>
-                                    <div class="input-group mb-3">
-                                        <input type="hidden" name="user_username" class="form-control" value="{{ Auth::user()->username }}">
-                                    </div>
-
-                                    <!-- form data yang ditampilkan -->
-                 
-
-                                    <div class="input-group mb-3">
-                                        <div class="input-group">
-                                            <input type="text" name="link" class="form-control" placeholder="Masukkan Tautan" value="{{ $tautan->link }}">
-                                        </div>
-                                        @error('link') <p class="m-0 p-0 text text-danger"> {{ "Maaf, Tautan tidak boleh kosong" }}</p>@enderror
-                                    </div>
-                                    
-                                    <div class="input-group mb-3">
-                                        <div class="input-group">
-                                            <input type="text" name="code" class="form-control" placeholder="Masukkan Tautan Kustom (Opsional)" value="{{ $tautan->code }}">
-                                        </div>
-                                        @error('code') <p class="m-0 p-0 text text-danger"> {{ "nama tersebut tidak bisa digunakan, karena sudah ada yang menggunakanannya" }}</p>@enderror
-                                    </div>
-                                    <div class="input-group mb-3">
-                                        <input type="text" name="judul" class="form-control" placeholder="Masukkan Judul Tautan (Opsional)" value="{{ $tautan->judul }}">
-                                    </div>
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-addon">
-                                            <button class="btn btn-success">Simpan</button>
-                                        </div>
-                                    </div>
-                                    
-                                    @error('link') <p class="m-0 p-0 text text-danger"> {{ $message }}</p>@enderror
-                                </form>
+                                @error('link') <p class="m-0 p-0 text text-danger"> {{ "Maaf, Tautan tidak boleh kosong" }}</p>@enderror
+                            </div>
+                            
+                            <div class="input-group mb-3">
+                                <p>Masukkan Tautan</p>
+                                <div class="input-group">
+                                    <input type="text" name="code" class="form-control" placeholder="Masukkan Tautan Kustom (Opsional)" value="{{ $tautan->code }}">
+                                </div>
+                                @error('code') <p class="m-0 p-0 text text-danger"> {{ "nama tersebut tidak bisa digunakan, karena sudah ada yang menggunakanannya" }}</p>@enderror
+                            </div>
+                            <div class="input-group mb-3">
+                                <p>Masukkan Tautan</p>
+                                <div class="input-group">
+                                    <input type="text" name="judul" class="form-control" placeholder="Masukkan Judul Tautan (Opsional)" value="{{ $tautan->judul }}">
+                                </div>
+                            </div>
+                            <div class="input-group mb-3">
                                 <div class="input-group-addon">
-                                    <a href="/home">
-                                        <button class="btn btn-danger">Batal</button>
-                                    </a>
-                                </div>
+                                    <button class="btn btn-success">Simpan</button>
                                 </div>
                             </div>
-
-
-
-
+                            
+                            @error('link') <p class="m-0 p-0 text text-danger"> {{ $message }}</p>@enderror
+                            </form>
+                            <div class="input-group-addon">
+                                <a href="/home">
+                                    <button class="btn btn-danger">Batal</button>
+                                </a>
+                            </div>
                         </div>
+                        
+                        <!-- End Form -->
                     </div>
-                </div>
+                </div> 
             </div>
         </div>
     </div>

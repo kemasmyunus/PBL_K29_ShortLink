@@ -41,6 +41,11 @@
                             @if(session('success'))
                             <div class="alert alert-success">{{ session ('success') }}</div>
                             @endif
+                            <style>
+                                .card{
+                                    margin:10px 10px 70px 10px;
+                                }
+                            </style>
                             <div class="card">
                                 <div class="card-header">
                                     <h1>Form Pemendek Tautan</h1>
