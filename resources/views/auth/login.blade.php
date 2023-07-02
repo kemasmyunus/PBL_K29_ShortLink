@@ -64,62 +64,82 @@
 
         <!-- HALAMAN LOGIN PAGE -->
 
-        <div class="section-heading" id="top">
-            <h2>Halaman <em>Login</em></h2>
-            
-        </div>
-        <div class="col-md-6 offset-md-3">
-            <div class="card">
-                <div class="card-header">{{ __('Masuk ke akun anda') }}</div>
+        <div id="top">
+            <style>
+                .kotak{
+                    margin: 5rem auto;
+                    width: 50%;
+                    padding: 10px;  
+                }
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
+                .bg {
+                    /* Full height */                              
+                    /* Center and scale the image nicely */
+                    background-size: cover;
+                    widows: 300px;
+                  }
+                  .card{
+                    margin: 13px;
+                    padding: 30px
+                  }
+            </style>
+            <div class="bg">
+                <div class="kotak">                     
+                    <div class="card">
+        
+                            <form method="POST" action="{{ route('login') }}">
+                                <div class="mb-2">
 
-                        <h6>{{ 'Username' }}</h6>
-                        <div class="row mb-3">
-
-                            <div class="col-md-12">
-                                <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
-
-                                @error('username')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <h6>{{ 'Password' }}</h6>
-                        <div class="row mb-3">
-
-                            <div class="col-md-12">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-
-                        <div class="row mb-0">
-                            <div class="col-md-12">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Masuk') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('authedit') }}">
-                                        {{ __('Lupa Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                                    <h5>Masuk ke akun anda</h5>
+                                </div>
+                                
+                                @csrf
+        
+                                <h6>{{ 'Username' }}</h6>
+                                <div class="row mb-3">
+        
+                                    <div class="col-md-12">
+                                        <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
+        
+                                        @error('username')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+        
+                                <h6>{{ 'Password' }}</h6>
+                                <div class="row mb-3">
+        
+                                    <div class="col-md-12">
+                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+        
+                                        @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+        
+        
+                                <div class="row mb-0">
+                                    <div class="col-md-12">
+                                        <button type="submit" class="btn btn-primary">
+                                            {{ __('Masuk') }}
+                                        </button>
+        
+                                        @if (Route::has('password.request'))
+                                            <a class="btn btn-link" href="{{ route('authedit') }}">
+                                                {{ __('Lupa Password?') }}
+                                            </a>
+                                        @endif
+                                    </div>
+                                </div>
+                            </form>
+                    </div>
+                </div> 
             </div>
         </div>
 

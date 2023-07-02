@@ -51,9 +51,6 @@ class EditUserController extends Controller
         return redirect('home')->withSuccess('Profil Berhasil Diubah');
     }
 
-
-
-
     public function authedit()
     {
         return view('authedit');
