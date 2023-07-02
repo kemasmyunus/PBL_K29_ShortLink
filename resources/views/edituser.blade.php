@@ -55,6 +55,7 @@
                             <div class="input-group">
                                 <input type="text" name="username" class="form-control" placeholder="Masukkan Username" value="{{ $edituser->username }}">
                             </div>
+                            @error('username') <p class="m-0 p-0 text text-danger"> {{ $message }}</p>@enderror
                         </div>
                         
                         <div class="input-group mb-3">
@@ -62,6 +63,7 @@
                             <div class="input-group">
                                 <input type="text" name="fullname" class="form-control" placeholder="Masukkan Fullname" value="{{ $edituser->fullname }}">
                             </div>
+                            @error('fullname') <p class="m-0 p-0 text text-danger"> {{ $message }}</p>@enderror
                         </div>
                    
                         <div class="input-group mb-3">
@@ -70,7 +72,6 @@
                             </div>
                         </div>
                         
-                        @error('link') <p class="m-0 p-0 text text-danger"> {{ $message }}</p>@enderror
                         </form>
                         <div class="input-group-addon">
                             <a href="/home">

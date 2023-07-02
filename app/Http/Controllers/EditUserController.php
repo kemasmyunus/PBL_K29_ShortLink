@@ -20,6 +20,10 @@ class EditUserController extends Controller
         $request->validate([
             'username' => ['required', 'string', 'max:255', 'unique:users'],
             'fullname' => ['required', 'string', 'max:255'],
+        ],[
+            'username.unique'=>"maaf, username sudah digunakan",
+            'username.required'=>"maaf, username tidak boleh kosong",
+            'fullname.required'=>"maaf, fullname tidak boleh kosong",
         ]);
 
         $input['username']=$request->username;
@@ -41,6 +45,10 @@ class EditUserController extends Controller
     public function updatepassword(Request $request, $id){
         $request->validate([
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ],[
+            'password.required'=>'password belum dimasukkan',
+            'password.min'=>'password minimal berisikan 8 karakter',
+            'password.confirmed'=>'password tidak sama',
         ]);
 
         $input['password']=Hash::make($request->password);
