@@ -53,6 +53,14 @@ class RegisterController extends Controller
             'username' => ['required', 'string', 'max:255', 'unique:users'],
             'fullname' => ['required', 'string', 'max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ],[
+            'username.required'=>'username belum dimasukkan',
+            'username.unique'=>'nama sudah digunakan',
+            'fullname.required'=>'fullname belum dimasukkan',
+            'password.required'=>'password belum dimasukkan',
+            'password.min'=>'password minimal berisikan 8 karakter',
+            'password.confirmed'=>'password tidak sama',
+
         ]);
     }
 

@@ -66,14 +66,14 @@
                                         <div class="input-group">
                                             <input type="text" name="link" class="form-control" placeholder="Masukkan Tautan">
                                         </div>
-                                        @error('link') <p class="m-0 p-0 text text-danger"> {{ "Maaf, Tautan tidak boleh kosong" }}</p>@enderror
+                                        @error('link') <p class="m-0 p-0 text text-danger"> {{ $message }}</p>@enderror
                                     </div>
                                     
                                     <div class="input-group mb-3">
                                         <div class="input-group">
                                             <input type="text" name="code" class="form-control" placeholder="Masukkan Tautan Kustom (Opsional)">
                                         </div>
-                                        @error('code') <p class="m-0 p-0 text text-danger"> {{ "nama tersebut tidak bisa digunakan, karena sudah ada yang menggunakanannya" }}</p>@enderror
+                                        @error('code') <p class="m-0 p-0 text text-danger"> {{ $message }}</p>@enderror
                                     </div>
 
                                     <div class="input-group mb-3">

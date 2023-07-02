@@ -25,7 +25,10 @@ class ShortLinkController extends Controller
     {
         $request->validate([
             'link' => 'required|url',
-            'code' => 'unique:short_links'
+            'code' => 'unique:short_links'],[
+            'link.required'=>'maaf, link tidak boleh kosong',
+            'link.url'=>'maaf, link tidak diterima. link tidak valid',
+            'code.unique'=>'maaf, nama sudah digunakan'
         ]);
 
         $input['user_id']=$request->user_id;
@@ -81,7 +84,10 @@ class ShortLinkController extends Controller
     public function update(Request $request, $id){
         $request->validate([
             'link' => 'required|url',
-            'code' => 'unique:short_links'
+            'code' => 'unique:short_links'],[
+            'link.required'=>'maaf, link tidak boleh kosong',
+            'link.url'=>'maaf, link tidak diterima. link tidak valid',
+            'code.unique'=>'maaf, nama sudah digunakan'
         ]);
 
         $input['user_id']=$request->user_id;
