@@ -59,18 +59,21 @@
                                         <div class="input-group">
                                             <input type="text" name="username" class="form-control" placeholder="Masukkan Username" >
                                         </div>
+                                        @error('username') <p class="m-0 p-0 text text-danger"> {{ $message }}</p>@enderror
                                     </div>
                                     
                                     <div class="input-group mb-3">
                                         <div class="input-group">
                                             <input type="text" name="fullname" class="form-control" placeholder="Masukkan Fullname">
                                         </div>
+                                        @error('fullname') <p class="m-0 p-0 text text-danger"> {{ $message }}</p>@enderror
                                     </div>
-
+                                    
                                     <div class="input-group mb-3">
                                         <div class="input-group">
                                             <input type="password" name="password" class="form-control" placeholder="Masukkan Password">
                                         </div>
+                                        @error('password') <p class="m-0 p-0 text text-danger"> {{ $message }}</p>@enderror
                                     </div>
                                
                                     <div class="input-group">
@@ -79,7 +82,6 @@
                                         </div>
                                     </div>
                                     
-                                    @error('link') <p class="m-0 p-0 text text-danger"> {{ $message }}</p>@enderror
                                     </form>
                                     <div class="input-group-addon">
                                         <a href="/">

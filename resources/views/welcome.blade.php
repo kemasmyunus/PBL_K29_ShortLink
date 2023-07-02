@@ -58,6 +58,11 @@
 
             <div class="video-overlay header-text">
                 <div class="caption">
+                    @if (session('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('success') }}
+                    </div>
+                    @endif
                     <h6>buat tautan sesuai keinginanmu</h6>
                     <h2>ringkas <em>tautan</em> mu</h2>
                     <div class="main-button scroll-to-section">

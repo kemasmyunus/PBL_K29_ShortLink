@@ -70,7 +70,12 @@ class EditUserController extends Controller
             'username' => ['required', 'string', 'max:255'],
             'fullname' => ['required', 'string', 'max:255'],
             'password' => ['required', 'string', 'min:8'],
+        ],[
+            'username.required'=>"maaf, username tidak boleh kosong",
+            'password.required'=>"maaf, password tidak boleh kosong",
+            'fullname.required'=>"maaf, fullname tidak boleh kosong",
         ]);
+
     
         $user = User::where('username', $request->username)
             ->where('fullname', $request->fullname)
