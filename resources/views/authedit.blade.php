@@ -3,16 +3,52 @@
         <!-- *** LINK *** -->
         <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
             
-        <!-- Additional CSS Files -->
-        <link rel="stylesheet" type="text/css" href="admin/tamplate/training-studio-1.0.0/assets/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="admin/tamplate/training-studio-1.0.0/assets/css/font-awesome.css">
-        <link rel="stylesheet" href="admin/tamplate/training-studio-1.0.0/assets/css/templatemo-training-studio.css">
-
-
     <!-- *** END LINK *** -->
     
 </head> 
+    
+        <!-- *** LINK *** -->
+        <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+            
+        <!-- Additional CSS Files -->
+        <link rel="stylesheet" type="text/css" href="tamplate/training-studio-1.0.0/assets/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="tamplate/training-studio-1.0.0/assets/css/font-awesome.css">
+        <link rel="stylesheet" href="tamplate/training-studio-1.0.0/assets/css/templatemo-training-studio.css">
+    <!-- *** END LINK *** -->
+    <title>Handapi | Lupa Password</title>
 
+</head> 
+<body>
+
+    <!-- *** HEADER / NAVBAR *** -->
+    <!-- DIGUNAKAN UNTUK MENU NAVIGASI -->
+        <!-- ***** Header Area Start ***** -->
+        <header class="header-area header-sticky">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <nav class="main-nav">
+                            <!-- ***** Logo Start ***** -->
+                            
+                            <a href="index.html" class="logo"><img src="./img/handapilogo.png" height="60" alt="" ></a>
+                            <!-- ***** Logo End ***** -->
+                            <!-- ***** Menu Start ***** -->
+                            <ul class="nav">
+                                <li class="scroll-to-section"><a href="#top" class="active">Halaman Utama</a></li>
+                                <li class="scroll-to-section"><a href="#features">Bantuan</a></li>
+                                <li class="main-button"><a href="{{ route('login') }}">Login</a></li>
+                            </ul>        
+                            <a class='menu-trigger'>
+                                <span>Menu</span>
+                            </a>
+                            <!-- ***** Menu End ***** -->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- ***** Header Area End ***** -->
+    <!-- *** END HEADER / END NAVBAR *** -->
 
 <!-- CONTENT -->
 
@@ -44,7 +80,7 @@
                                 padding: 30px
                               }
                         </style>
-                        <div class="bg">
+                        <div class="bg" id="top">
                             <div class="kotak">                     
                                 <div class="card">
                                     <!-- Form -->
@@ -167,11 +203,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <p>Copyright &copy; 2020 Training Studio
+                        <p>Copyright &copy; 2023 Handapi
                         
-                        - Designed by <a rel="nofollow" href="https://templatemo.com" class="tm-text-link" target="_parent">TemplateMo</a><br>
+                        - Designed by Kelompok 29<br>
 
-                    Distributed by <a rel="nofollow" href="https://themewagon.com" class="tm-text-link" target="_blank">ThemeWagon</a>
+                    Project PBL di <a rel="" href="https://poliban.ac.id/" class="tm-text-link" target="_blank">Politeknin Negeri Banjarmaisn</a>
                     
                     </p>
                         

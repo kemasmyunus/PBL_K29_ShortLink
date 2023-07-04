@@ -9,6 +9,7 @@
         <link rel="stylesheet" type="text/css" href="admin/tamplate/training-studio-1.0.0/assets/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="admin/tamplate/training-studio-1.0.0/assets/css/font-awesome.css">
         <link rel="stylesheet" href="admin/tamplate/training-studio-1.0.0/assets/css/templatemo-training-studio.css">
+        <title>Handapi | Edit User</title>
 
 
     <!-- *** END LINK *** -->
@@ -157,11 +158,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <p>Copyright &copy; 2020 Training Studio
+                        <p>Copyright &copy; 2023 Handapi
                         
-                        - Designed by <a rel="nofollow" href="https://templatemo.com" class="tm-text-link" target="_parent">TemplateMo</a><br>
+                        - Designed by Kelompok 29<br>
 
-                    Distributed by <a rel="nofollow" href="https://themewagon.com" class="tm-text-link" target="_blank">ThemeWagon</a>
+                    Project PBL di <a rel="" href="https://poliban.ac.id/" class="tm-text-link" target="_blank">Politeknin Negeri Banjarmaisn</a>
                     
                     </p>
                         
