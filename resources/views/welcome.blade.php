@@ -73,6 +73,24 @@
         </div>
         <!-- ***** Main Banner Area End ***** -->
 
+        <style>
+            .sponsor {
+                height: auto;
+                width: 100%;
+                background-color: aqua;
+            }
+            .sp_logo {
+                width: 100%;
+                height: auto;
+            }
+        </style>
+        
+        <div class="sponsor">
+            <img src="img/sponsorti.jpg" class="sp_logo">
+        </div>
+        
+
+
         <!-- ***** Features Item Start ***** -->
         <section class="section" id="features">
             <div class="container">
