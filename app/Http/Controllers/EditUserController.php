@@ -18,14 +18,16 @@ class EditUserController extends Controller
 
     public function update(Request $request, $id){
         $request->validate([
-            'username' => ['required', 'string', 'max:255', 'unique:users'],
-            'fullname' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'max:30', 'unique:users'],
+            'fullname' => ['required', 'string', 'max:90'],
         ],[
             'username.unique'=>"maaf, username sudah digunakan",
             'username.required'=>"maaf, username tidak boleh kosong",
             'fullname.required'=>"maaf, fullname tidak boleh kosong",
+            'username.max'=> "maaf, username maksimal 30 karakter",
+            'fullname.max'=> "maaf, fullname maksimal 90 karakter",
         ]);
-
+        
         $input['username']=$request->username;
         $input['fullname']=$request->fullname;
 
@@ -67,13 +69,15 @@ class EditUserController extends Controller
     public function authupdate(Request $request)
     {
         $request->validate([
-            'username' => ['required', 'string', 'max:255'],
-            'fullname' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'max:30'],
+            'fullname' => ['required', 'string', 'max:90'],
             'password' => ['required', 'string', 'min:8'],
         ],[
             'username.required'=>"maaf, username tidak boleh kosong",
             'password.required'=>"maaf, password tidak boleh kosong",
             'fullname.required'=>"maaf, fullname tidak boleh kosong",
+            'username.max'=> "maaf, username maksimal 30 karakter",
+            'fullname.max'=> "maaf, fullname maksimal 90 karakter",
         ]);
 
     

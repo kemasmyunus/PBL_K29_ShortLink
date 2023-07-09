@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('short_links', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
-            $table->string('user_username');
+            $table->bigInteger('user_id');
+            $table->char('user_username',30);
             $table->string('code');
-            $table->string('judul');
+            $table->char('judul', 30);
             $table->string('link');
             $table->timestamps();
         });

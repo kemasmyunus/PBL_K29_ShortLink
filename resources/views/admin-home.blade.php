@@ -97,7 +97,7 @@
                         
                         @if (!$dataFound)
                             <tr>
-                                <td colspan="4">
+                                <td colspan="6">
                                     data kosong
                                 </td>
                             </tr>
@@ -255,7 +255,7 @@
             
             <!-- Bootstrap -->
             <script src="tamplate/training-studio-1.0.0/assets/js/popper.js"></script>
-            <script src="tamplate/training-studio-1.0.0//js/bootstrap.min.js"></script>
+            <script src="tamplate/training-studio-1.0.0/assets/js/bootstrap.min.js"></script>
             
             <!-- Plugins -->
             <script src="tamplate/training-studio-1.0.0/assets/js/waypoints.min.js"></script>

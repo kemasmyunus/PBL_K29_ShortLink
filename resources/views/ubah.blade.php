@@ -6,9 +6,9 @@
         <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
             
         <!-- Additional CSS Files -->
-        <link rel="stylesheet" type="text/css" href="admin/tamplate/training-studio-1.0.0/assets/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="admin/tamplate/training-studio-1.0.0/assets/css/font-awesome.css">
-        <link rel="stylesheet" href="admin/tamplate/training-studio-1.0.0/assets/css/templatemo-training-studio.css">
+        <link rel="stylesheet" type="text/css" href="tamplate/training-studio-1.0.0/assets/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="tamplate/training-studio-1.0.0/assets/css/font-awesome.css">
+        <link rel="stylesheet" href="tamplate/training-studio-1.0.0/assets/css/templatemo-training-studio.css">
 
         <title>Handapi | Edit Tautan</title>
 
@@ -118,7 +118,7 @@
 
                                 <div class="section-heading">
                                     <h2>Halaman <em>Bantuan</em></h2>
-                                    <img src="admin/tamplate/training-studio-1.0.0/assets/images/icon-line.png" alt="waves">
+                                    <img src="tamplate/training-studio-1.0.0/assets/images/icon-line.png" alt="waves">
                                     <p>ini adalah halaman bantuan, jika anda kesulitan dalam menggunakan fitur di website ini, anda dapat mengikuti langkah-langkah dibawah.</p>
                                 </div>
                             </div>
@@ -126,7 +126,7 @@
                                 <ul class="features-items">
                                     <li class="feature-item">
                                         <div class="left-icon">
-                                            <img src="admin/tamplate/training-studio-1.0.0/assets/images/icon-person.png" alt="First One">
+                                            <img src="tamplate/training-studio-1.0.0/assets/images/icon-person.png" alt="First One">
                                         </div>
                                         <div class="right-content">
                                             <h4>1. Buat Akun</h4>
@@ -135,7 +135,7 @@
                                     </li>
                                     <li class="feature-item">
                                         <div class="left-icon">
-                                            <img src="admin/tamplate/training-studio-1.0.0/assets/images/icon-link.png" alt="second one">
+                                            <img src="tamplate/training-studio-1.0.0/assets/images/icon-link.png" alt="second one">
                                         </div>
                                         <div class="right-content">
                                             <h4>2. Ringkas Tautan Anda</h4>
@@ -148,7 +148,7 @@
                                 <ul class="features-items">
                                     <li class="feature-item">
                                         <div class="left-icon">
-                                            <img src="admin/tamplate/training-studio-1.0.0/assets/images/icon-share.png" alt="fourth muscle">
+                                            <img src="tamplate/training-studio-1.0.0/assets/images/icon-share.png" alt="fourth muscle">
                                         </div>
                                         <div class="right-content">
                                             <h4>3. Bagikan</h4>
@@ -157,7 +157,7 @@
                                     </li>
                                     <li class="feature-item">
                                         <div class="left-icon">
-                                            <img src="admin/tamplate/training-studio-1.0.0/assets/images/icon-friend.png" alt="training fifth">
+                                            <img src="tamplate/training-studio-1.0.0/assets/images/icon-friend.png" alt="training fifth">
                                         </div>
                                         <div class="right-content">
                                             <h4>4. Tersebar</h4>
@@ -196,22 +196,22 @@
         <!-- *** SCRIPT *** -->
         <!-- SCRIPT UNTUK ANIMASI -->
             <!-- jQuery -->
-            <script src="admin/tamplate/training-studio-1.0.0/assets/js/jquery-2.1.0.min.js"></script>
+            <script src="tamplate/training-studio-1.0.0/assets/js/jquery-2.1.0.min.js"></script>
             
             <!-- Bootstrap -->
-            <script src="admin/tamplate/training-studio-1.0.0/assets/js/popper.js"></script>
-            <script src="admin/tamplate/training-studio-1.0.0/js/bootstrap.min.js"></script>
+            <script src="tamplate/training-studio-1.0.0/assets/js/popper.js"></script>
+            <script src="tamplate/training-studio-1.0.0/assets/js/bootstrap.min.js"></script>
             
             <!-- Plugins -->
-            <script src="admin/tamplate/training-studio-1.0.0/assets/js/waypoints.min.js"></script>
-            <script src="admin/tamplate/training-studio-1.0.0/assets/js/scrollreveal.min.js"></script>
-            <script src="admin/tamplate/training-studio-1.0.0/assets/js/jquery.counterup.min.js"></script>
-            <script src="admin/tamplate/training-studio-1.0.0/assets/js/imgfix.min.js"></script> 
-            <script src="admin/tamplate/training-studio-1.0.0/assets/js/mixitup.js"></script> 
-            <script src="admin/tamplate/training-studio-1.0.0/assets/js/accordions.js"></script>
+            <script src="tamplate/training-studio-1.0.0/assets/js/waypoints.min.js"></script>
+            <script src="tamplate/training-studio-1.0.0/assets/js/scrollreveal.min.js"></script>
+            <script src="tamplate/training-studio-1.0.0/assets/js/jquery.counterup.min.js"></script>
+            <script src="tamplate/training-studio-1.0.0/assets/js/imgfix.min.js"></script> 
+            <script src="tamplate/training-studio-1.0.0/assets/js/mixitup.js"></script> 
+            <script src="tamplate/training-studio-1.0.0/assets/js/accordions.js"></script>
             
             <!-- Global Init -->
-            <script src="admin/tamplate/training-studio-1.0.0/assets/js/custom.js"></script>
+            <script src="tamplate/training-studio-1.0.0/assets/js/custom.js"></script>
         <!-- *** END SCRIPT *** -->
         
 @endsection

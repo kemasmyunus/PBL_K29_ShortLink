@@ -272,7 +272,7 @@
             
             <!-- Bootstrap -->
             <script src="tamplate/training-studio-1.0.0/assets/js/popper.js"></script>
-            <script src="tamplate/training-studio-1.0.0//js/bootstrap.min.js"></script>
+            <script src="tamplate/training-studio-1.0.0/assets/js/bootstrap.min.js"></script>
             
             <!-- Plugins -->
             <script src="tamplate/training-studio-1.0.0/assets/js/waypoints.min.js"></script>

@@ -50,8 +50,8 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'username' => ['required', 'string', 'max:255', 'unique:users'],
-            'fullname' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'max:30', 'unique:users'],
+            'fullname' => ['required', 'string', 'max:90'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ],[
             'username.required'=>'username belum dimasukkan',
@@ -60,7 +60,8 @@ class RegisterController extends Controller
             'password.required'=>'password belum dimasukkan',
             'password.min'=>'password minimal berisikan 8 karakter',
             'password.confirmed'=>'password tidak sama',
-
+            'username.max'=> "maaf, username maksimal 30 karakter",
+            'fullname.max'=> "maaf, fullname maksimal 90 karakter",
         ]);
     }
 
