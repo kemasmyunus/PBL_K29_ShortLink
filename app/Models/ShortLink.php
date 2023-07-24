@@ -15,5 +15,7 @@ class ShortLink extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+    protected $primaryKey = 'link_id';
+
 
 }

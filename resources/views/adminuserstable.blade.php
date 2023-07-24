@@ -78,19 +78,19 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a class="nav-link" href="{{ route('editprofil',['id' => Auth::user()->id]) }}">
+                    <a class="nav-link" href="{{ route('editprofil',['user_id' => Auth::user()->user_id]) }}">
                       <i class="far fa-circle nav-icon"></i>
                       {{ "Ubah Profil" }}
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="{{ route('ubahpassword',['id' => Auth::user()->id]) }}">
+                    <a class="nav-link" href="{{ route('ubahpassword',['user_id' => Auth::user()->user_id]) }}">
                       <i class="far fa-circle nav-icon"></i>
                       {{ "Ubah Password" }}
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" onclick="hapusakun({{ Auth::user()->id }})">
+                    <a class="nav-link" onclick="hapusakun({{ Auth::user()->user_id }})">
                       <i class="far fa-circle nav-icon"></i>
                       {{ "Hapus Akun" }}
                     </a>
@@ -179,7 +179,7 @@
                 <tbody>
                     @foreach ($users as $row)
                     <tr>
-                        <td>{{ $row->id }}</td>
+                        <td>{{ $row->user_id }}</td>
                         <td>{{ $row->username }}</td>
                         <td>{{ $row->fullname }}</td>
                         <td>

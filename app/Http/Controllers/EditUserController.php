@@ -11,13 +11,13 @@ use Illuminate\Support\Facades\Hash;
 
 class EditUserController extends Controller
 {
-    public function edit(Request $request, $id)
+    public function edit(Request $request, $user_id)
     {
-        $edituser = User::find($id);
+        $edituser = User::find($user_id);
         return view('edituser', compact('edituser'));
     }
 
-    public function update(Request $request, $id){
+    public function update(Request $request, $user_id){
         $request->validate([
             'username' => ['required', 'string', 'max:30', 'unique:users'],
             'fullname' => ['required', 'string', 'max:90'],
@@ -33,19 +33,19 @@ class EditUserController extends Controller
         $input['fullname']=$request->fullname;
 
         // memasukkan data baru kedalam model ShortLink dengan $input
-        User::whereId($id)->update($input);
+        User::whereId($user_id)->update($input);
         // kembali ke alamat "home" dengan pesan sukses
         return redirect('home')->withSuccess('Profil Berhasil Diubah');
     }
 
 
-    public function ubahpassword(Request $request, $id)
+    public function ubahpassword(Request $request, $user_id)
     {
-        $editpassworduser = User::find($id);
+        $editpassworduser = User::find($user_id);
         return view('editpassworduser', compact('editpassworduser'));
     }
 
-    public function updatepassword(Request $request, $id){
+    public function updatepassword(Request $request, $user_id){
         $request->validate([
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ],[
@@ -58,7 +58,7 @@ class EditUserController extends Controller
         $input['updated_at']=now();
 
         // memasukkan data baru kedalam model ShortLink dengan $input
-        User::whereId($id)->update($input);
+        User::whereId($user_id)->update($input);
         // kembali ke alamat "home" dengan pesan sukses
         return redirect('home')->withSuccess('Password Berhasil Diubah');
     }
@@ -101,13 +101,13 @@ class EditUserController extends Controller
         }
     }
 
-    public function hapusakun(Request $request, $id) {
-        $hapus = User::find($id);
+    public function hapusakun(Request $request, $user_id) {
+        $hapus = User::find($user_id);
         if ($hapus) {
             $hapus->delete();
         }
     
-        $link = ShortLink::where('user_id', $id);
+        $link = ShortLink::where('user_id', $user_id);
         if ($link) {
             $link->delete();
         }

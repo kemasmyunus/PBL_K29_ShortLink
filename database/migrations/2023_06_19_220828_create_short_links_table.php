@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('short_links', function (Blueprint $table) {
-            $table->id();
+            $table->id('link_id');
             $table->bigInteger('user_id');
             $table->char('user_username',30);
             $table->string('code');

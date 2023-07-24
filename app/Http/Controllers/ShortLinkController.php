@@ -35,6 +35,7 @@ class ShortLinkController extends Controller
         $input['user_username']=$request->user_username;
         // variabel link = link sebelum dipendekkan
         $input['link'] = $request->link;
+        
 
         //Str memang error pada vscode, tapi masih bisa berjalan dengan baik
         /* variabel code digunakan untuk memberikan huruf custom dibelakang domain
@@ -75,13 +76,13 @@ class ShortLinkController extends Controller
         }
     }
     
-    public function ubah(Request $request, $id)
+    public function ubah(Request $request, $link_id)
     {
-        $tautan = ShortLink::find($id);
+        $tautan = ShortLink::find($link_id);
         return view('ubah', compact('tautan'));
     }
 
-    public function update(Request $request, $id){
+    public function update(Request $request, $link_id){
         $request->validate([
             'link' => 'required|url',
             'code' => 'unique:short_links'],[
@@ -94,6 +95,8 @@ class ShortLinkController extends Controller
         $input['user_username']=$request->user_username;
         // variabel link = link sebelum dipendekkan
         $input['link'] = $request->link;
+        $input['updated_at']=now();
+
 
         //Str memang error pada vscode, tapi masih bisa berjalan dengan baik
         /* variabel code digunakan untuk memberikan huruf custom dibelakang domain
@@ -118,13 +121,13 @@ class ShortLinkController extends Controller
         }
 
         // memasukkan data baru kedalam model ShortLink dengan $input
-        ShortLink::whereId($id)->update($input);
+        ShortLink::whereId($link_id)->update($input);
         // kembali ke alamat "home" dengan pesan sukses
         return redirect('home')->withSuccess('Tautan Pendek Berhasil Diubah');
     }
 
-    public function delete(Request $request, $id){
-        $hapus = ShortLink::find($id);
+    public function delete(Request $request, $link_id){
+        $hapus = ShortLink::find($link_id);
         if($hapus){
             $hapus->delete();
         }
@@ -132,8 +135,8 @@ class ShortLinkController extends Controller
         return redirect('home')->withSuccess('Tautan Pendek Berhasil Dihapus');
     }
     
-    public function admindelete(Request $request, $id){
-        $hapus = ShortLink::find($id);
+    public function admindelete(Request $request, $link_id){
+        $hapus = ShortLink::find($link_id);
         if($hapus){
             $hapus->delete();
         }

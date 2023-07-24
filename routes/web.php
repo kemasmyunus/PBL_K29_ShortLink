@@ -29,22 +29,22 @@ Route::get('/blank', function () {
 
 //crud
 //ubah user
-Route::get('/ubah{id}',[ShortLinkController::class, 'ubah'])->name('user.ubah');
-Route::put('/update{id}',[ShortLinkController::class, 'update'])->name('user.update');
-Route::get('/delete{id}',[ShortLinkController::class, 'delete'])->name('user.delete');
-Route::get('/admindelete{id}',[ShortLinkController::class, 'admindelete'])->name('admin.delete');
+Route::get('/ubah{link_id}',[ShortLinkController::class, 'ubah'])->name('user.ubah');
+Route::put('/update{link_id}',[ShortLinkController::class, 'update'])->name('user.update');
+Route::get('/delete{link_id}',[ShortLinkController::class, 'delete'])->name('user.delete');
+Route::get('/admindelete{link_id}',[ShortLinkController::class, 'admindelete'])->name('admin.delete');
 //ubah password
-Route::get('/passwordubah{id}',[EditUserController::class, 'ubahpassword'])->name('ubahpassword');
-Route::put('/passwordupdate{id}',[EditUserController::class, 'updatepassword'])->name('updatepassword');
+Route::get('/passwordubah{user_id}',[EditUserController::class, 'ubahpassword'])->name('ubahpassword');
+Route::put('/passwordupdate{user_id}',[EditUserController::class, 'updatepassword'])->name('updatepassword');
 
 
 Route::get('/authedit',[EditUserController::class, 'authedit'])->name('authedit');
 Route::put('/authupdate',[EditUserController::class, 'authupdate'])->name('authupdate');
 
 
-Route::get('/useredit{id}',[EditUserController::class, 'edit'])->name('editprofil');
-Route::put('/userupdate{id}',[EditUserController::class, 'update'])->name('updateprofil');
-Route::get('/hapusakun{id}',[EditUserController::class, 'hapusakun'])->name('hapusakun');
+Route::get('/useredit{user_id}',[EditUserController::class, 'edit'])->name('editprofil');
+Route::put('/userupdate{user_id}',[EditUserController::class, 'update'])->name('updateprofil');
+Route::get('/hapusakun{user_id}',[EditUserController::class, 'hapusakun'])->name('hapusakun');
 
 Auth::routes();
 

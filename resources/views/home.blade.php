@@ -78,19 +78,19 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a class="nav-link" href="{{ route('editprofil',['id' => Auth::user()->id]) }}">
+                    <a class="nav-link" href="{{ route('editprofil',['user_id' => Auth::user()->user_id]) }}">
                       <i class="far fa-circle nav-icon"></i>
                       {{ "Ubah Profil" }}
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="{{ route('ubahpassword',['id' => Auth::user()->id]) }}">
+                    <a class="nav-link" href="{{ route('ubahpassword',['user_id' => Auth::user()->user_id]) }}">
                       <i class="far fa-circle nav-icon"></i>
                       {{ "Ubah Password" }}
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" onclick="hapusakun({{ Auth::user()->id }})">
+                    <a class="nav-link" onclick="hapusakun({{ Auth::user()->user_id }})">
                       <i class="far fa-circle nav-icon"></i>
                       {{ "Hapus Akun" }}
                     </a>
@@ -170,7 +170,7 @@
                     @csrf
                     <!-- form data yang disembunyikan -->
                     <div class="input-group mb-3">
-                      <input type="hidden" name="user_id" class="form-control" value="{{ Auth::user()->id }}">
+                      <input type="hidden" name="user_id" class="form-control" value="{{ Auth::user()->user_id }}">
                     </div>
                     <div class="input-group mb-3">
                       <input type="hidden" name="user_username" class="form-control" value="{{ Auth::user()->username }}">
@@ -249,7 +249,7 @@
                 @endphp
                 
                 @foreach ($links as $row)
-                    @if (Auth::user()->id == $row->user_id)
+                    @if (Auth::user()->user_id == $row->user_id)
                         @php
                             $dataFound = true;
                         @endphp
@@ -259,13 +259,13 @@
                             <td>{{ $row->link }}</td>
                             <td>
                                 <button class="btn btn-primary copy-button" onclick="copyLink('{{ route('shorten.link', $row->code) }}')">Salin</button>
-                                <a href="{{ route('user.ubah',['id' => $row->id]) }}">
+                                <a href="{{ route('user.ubah',['link_id' => $row->link_id]) }}">
                                 <button class="btn btn-success">
                                     Edit
                                     </button>
                                 </a>                               
                                 <a href="#">
-                                    <button class="btn btn-danger" onclick="hapus({{ $row->id }}, '{{ $row->judul }}')">hapus</button>
+                                    <button class="btn btn-danger" onclick="hapus({{ $row->user_id }}, '{{ $row->judul }}')">hapus</button>
                                   </a>
                                   
 
