@@ -55,6 +55,7 @@ class EditUserController extends Controller
         ]);
 
         $input['password']=Hash::make($request->password);
+        $input['updated_at']=now();
 
         // memasukkan data baru kedalam model ShortLink dengan $input
         User::whereId($id)->update($input);
@@ -90,6 +91,7 @@ class EditUserController extends Controller
             $user->username = $request->username;
             $user->fullname = $request->fullname;
             $user->password = bcrypt($request->password);
+            $user->updated_at = now();
             $user->save();
     
             // Kembali ke alamat "home" dengan pesan sukses
