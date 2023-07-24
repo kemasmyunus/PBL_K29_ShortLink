@@ -17,7 +17,7 @@ return new class extends Migration
             $table->char('user_username',30);
             $table->string('code');
             $table->char('judul', 30);
-            $table->string('link');
+            $table->text('link');
             $table->timestamps();
         });
     }
