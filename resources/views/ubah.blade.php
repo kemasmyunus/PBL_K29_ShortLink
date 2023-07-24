@@ -48,12 +48,12 @@
 
                                 <h5>Ubah Tautan</h5>
                             </div>
-                            <form method="post" action="{{ route('user.update', ['id'=>$tautan->id]) }}">
+                            <form method="post" action="{{ route('user.update', ['link_id'=>$tautan->link_id]) }}">
                             @csrf
                             @method('PUT')
                             <!-- form data yang disembunyikan -->
                             <div class="input-group">
-                                <input type="hidden" name="user_id" class="form-control" value="{{ Auth::user()->id }}">
+                                <input type="hidden" name="user_id" class="form-control" value="{{ Auth::user()->user_id }}">
                             </div>
                             <div class="input-group">
                                 <input type="hidden" name="user_username" class="form-control" value="{{ Auth::user()->username }}">

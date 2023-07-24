@@ -48,7 +48,7 @@
 
             <h5>Halaman Ganti Password</h5>
         </div>
-            <form method="post" action="{{ route('updatepassword', ['id'=>$editpassworduser->id]) }}">
+            <form method="post" action="{{ route('updatepassword', ['user_id'=>$editpassworduser->user_id]) }}">
             @csrf
             @method('PUT')
     

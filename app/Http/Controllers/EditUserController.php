@@ -32,9 +32,8 @@ class EditUserController extends Controller
         $input['username']=$request->username;
         $input['fullname']=$request->fullname;
 
-        // memasukkan data baru kedalam model ShortLink dengan $input
-        User::whereId($user_id)->update($input);
-        // kembali ke alamat "home" dengan pesan sukses
+        $user = User::findOrFail($user_id); // Mencari user berdasarkan ID, jika tidak ditemukan, lempar exception
+        $user->update($input); // Memasukkan data baru kedalam model ShortLink dengan $input        // kembali ke alamat "home" dengan pesan sukses
         return redirect('home')->withSuccess('Profil Berhasil Diubah');
     }
 
@@ -57,8 +56,8 @@ class EditUserController extends Controller
         $input['password']=Hash::make($request->password);
         $input['updated_at']=now();
 
-        // memasukkan data baru kedalam model ShortLink dengan $input
-        User::whereId($user_id)->update($input);
+        $user = User::findOrFail($user_id); // Mencari user berdasarkan ID, jika tidak ditemukan, lempar exception
+        $user->update($input); // Memasukkan data baru kedalam model ShortLink dengan $input  
         // kembali ke alamat "home" dengan pesan sukses
         return redirect('home')->withSuccess('Password Berhasil Diubah');
     }

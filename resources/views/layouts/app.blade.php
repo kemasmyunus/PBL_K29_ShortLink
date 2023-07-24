@@ -39,10 +39,10 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     
-                                    <a class="dropdown-item" href="{{ route('editprofil',['id' => Auth::user()->id]) }}">
+                                    <a class="dropdown-item" href="{{ route('editprofil',['user_id' => Auth::user()->user_id]) }}">
                                         {{ "Ubah Profil" }}
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('ubahpassword',['id' => Auth::user()->id]) }}">
+                                    <a class="dropdown-item" href="{{ route('ubahpassword',['user_id' => Auth::user()->user_id]) }}">
                                         {{ "Ubah Password" }}
                                     </a>
                                     

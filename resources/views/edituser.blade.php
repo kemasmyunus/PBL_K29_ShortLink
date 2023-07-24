@@ -45,7 +45,7 @@
                 <div class="kotak">                     
                     <div class="card">
 
-                        <form method="post" action="{{ route('updateprofil', ['id'=>$edituser->id]) }}">
+                        <form method="post" action="{{ route('updateprofil', ['user_id'=>$edituser->user_id]) }}">
                         @csrf
                         @method('PUT')
                         <div>
