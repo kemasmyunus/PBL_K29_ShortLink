@@ -44,6 +44,7 @@ Route::put('/authupdate',[EditUserController::class, 'authupdate'])->name('authu
 
 Route::get('/useredit{id}',[EditUserController::class, 'edit'])->name('editprofil');
 Route::put('/userupdate{id}',[EditUserController::class, 'update'])->name('updateprofil');
+Route::get('/hapusakun{id}',[EditUserController::class, 'hapusakun'])->name('hapusakun');
 
 Auth::routes();
 

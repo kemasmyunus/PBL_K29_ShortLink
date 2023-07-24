@@ -91,6 +91,12 @@
                     </a>
                   </li>
                   <li class="nav-item">
+                    <a class="nav-link" onclick="hapusakun({{ Auth::user()->id }})">
+                      <i class="far fa-circle nav-icon"></i>
+                      {{ "Hapus Akun" }}
+                    </a>
+                  </li>
+                  <li class="nav-item">
                     <a class="nav-link" href="{{ route('logout') }}"
                     onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
@@ -379,6 +385,21 @@
                                           var urlhapus = "/delete"+id;
                                           var urlbalik = "#top";
                                             var konfirmasi = confirm("Apakah Anda yakin ingin menghapus data "+judul+"?");
+                                        
+                                            if (konfirmasi) {
+                                              window.location.href = urlhapus;
+                                          } else {
+                                              window.location.href = urlbalik;
+                                            }
+                                          }
+                                        </script>
+
+                                        <!-- SCRIPT Hapus -->
+                                        <script>
+                                          function hapusakun(id) {
+                                          var urlhapus = "/hapusakun"+id;
+                                          var urlbalik = "#top";
+                                            var konfirmasi = confirm("Apakah Anda yakin ingin menghapus akun Anda?");
                                         
                                             if (konfirmasi) {
                                               window.location.href = urlhapus;

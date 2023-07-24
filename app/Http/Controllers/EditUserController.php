@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\ShortLink;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -97,5 +98,20 @@ class EditUserController extends Controller
             return redirect('/gagal');
         }
     }
+
+    public function hapusakun(Request $request, $id) {
+        $hapus = User::find($id);
+        if ($hapus) {
+            $hapus->delete();
+        }
+    
+        $link = ShortLink::where('user_id', $id);
+        if ($link) {
+            $link->delete();
+        }
+    
+        return redirect('/')->with('success', 'Akun berhasil dihapus');
+    }
+    
     
 }

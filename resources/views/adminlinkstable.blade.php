@@ -181,7 +181,7 @@
                             $dataFound = true;
                         @endphp
                         <tr>
-                            <td>{{ $row->user_id }}</td>
+                            <td>{{ $row->id }}</td>
                             <td>{{ $row->user_username }}</td>
                             <td>{{ $row->judul }}</td>
                             <td class="kode"><a href="{{ route('shorten.link', $row->code) }}" target="_blank">{{ route('shorten.link', $row->code) }}</a></td>
