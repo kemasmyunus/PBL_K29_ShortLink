@@ -23,6 +23,9 @@ use Psy\Command\EditCommand;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/blank', function () {
+    return view('adminusertable');
+});
 
 //crud
 //ubah user
@@ -51,7 +54,13 @@ Route::get('/home',[ShortLinkController::class, 'index']);
 Route::post('/home',[ShortLinkController::class, 'store'])->name('generate.shorten.link.post');
 
 // admin
-Route::get('/adminhome', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
+Route::get('/adminlinkstable', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
+Route::get('/adminlinkstable', function () {
+    return view('adminlinkstable');
+});
+Route::get('/adminuserstable', function () {
+    return view('adminuserstable');
+});
 
 // code
 Route::get('{code}', [ShortLinkController::class, 'shortenlink'])->name('shorten.link');

@@ -47,7 +47,7 @@ class LoginController extends Controller
         ]);
         if(auth()->attempt(array('username'=>$input['username'],'password'=>$input['password']))){
             if(auth()->user()->is_admin==1){
-                return redirect('adminhome');
+                return redirect('adminlinkstable');
             }else{
                 return redirect('home');
             }

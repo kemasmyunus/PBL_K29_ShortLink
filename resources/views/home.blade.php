@@ -1,334 +1,391 @@
-@extends('layouts.app')
-@section('content')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AdminLTE 3 | DataTables</title>
 
-    <head>
-        <!-- *** LINK *** -->
-        <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
-            
-        <!-- Additional CSS Files -->
-        <link rel="stylesheet" type="text/css" href="tamplate/training-studio-1.0.0/assets/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="tamplate/training-studio-1.0.0/assets/css/font-awesome.css">
-        <link rel="stylesheet" href="tamplate/training-studio-1.0.0/assets/css/templatemo-training-studio.css">
-        <title>Handapi | Home</title>
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="AdminLTE-3.2.0/plugins/fontawesome-free/css/all.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="AdminLTE-3.2.0/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="AdminLTE-3.2.0/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="AdminLTE-3.2.0/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="AdminLTE-3.2.0/dist/css/adminlte.min.css">
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+    </ul>
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="AdminLTE-3.2.0/index3.html" class="brand-link">
+      <img src="./img/hlogo.png" alt="AdminLTE Logo" class="brand-image elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">Handapi</span>
+    </a>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user (optional) -->
+
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="AdminLTE-3.2.0/dist/img/avatar6.jpg" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a class="nav-link"> {{ Auth::user()->username }}</a>
+        </div>
+      </div>
 
 
-    <!-- *** END LINK *** -->
     
-</head> 
 
+      <!-- SidebarSearch Form -->
+      <div class="form-inline">
+        <div class="input-group" data-widget="sidebar-search">
+          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+          <div class="input-group-append">
+            <button class="btn btn-sidebar">
+              <i class="fas fa-search fa-fw"></i>
+            </button>
+          </div>
+        </div>
+      </div>
 
-<!-- CONTENT -->
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-18">
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+               <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-user"></i>
+                  <p>
+                    Dashboard
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ route('editprofil',['id' => Auth::user()->id]) }}">
+                      <i class="far fa-circle nav-icon"></i>
+                      {{ "Ubah Profil" }}
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ route('ubahpassword',['id' => Auth::user()->id]) }}">
+                      <i class="far fa-circle nav-icon"></i>
+                      {{ "Ubah Password" }}
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                    <i class="far fa-circle nav-icon"></i>
+
+                     {{ __('Logout') }}
+                 </a>
+                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                     @csrf
+                 </form>
+                  </li>
+                </ul>
+              </li>
+    
+              <li class="nav-item">
+                <a href="adminlinkstable" class="nav-link active">
+                  <i class="nav-icon fas fa-link"></i>
+                  <p>
+                    Links
+                  </p>
+                </a>
+              </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Halaman Pemendek Tautan</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Halaman Pemendek Tautan</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-                    <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-                        @if (session('error'))
-                            <div class="alert alert-danger" role="alert">
-                                {{ session('error') }}
-                            </div>
-                        @endif
-                        
-                        <h2>Wellcome to the User Dashboard</h2>
+              @if (session('status'))
+                <div class="alert alert-success" role="alert">
+                  {{ session('status') }}
+                </div>
+              @endif
+              @if (session('error'))
+                <div class="alert alert-danger" role="alert">
+                  {{ session('error') }}
+                </div>
+              @endif
 
-                        {{ __('You are logged in!') }}
-                        <div class="container mt-5">
-                            @if(session('success'))
-                            <div class="alert alert-success">{{ session ('success') }}</div>
-                            @endif
-                            <style>
-                                .card{
-                                    margin:10px 10px 70px 10px;
-                                }
-                            </style>
-                            <div class="card">
-                                <div class="card-header">
-                                    <h1>Form Pemendek Tautan</h1>
-                                </div>
-                                <div class="card-body">
-                                    <form method="post" action="{{ route('generate.shorten.link.post') }}">
-                                    @csrf
-                                    <!-- form data yang disembunyikan -->
-                                    <div class="input-group mb-3">
-                                        <input type="hidden" name="user_id" class="form-control" value="{{ Auth::user()->id }}">
-                                    </div>
-                                    <div class="input-group mb-3">
-                                        <input type="hidden" name="user_username" class="form-control" value="{{ Auth::user()->username }}">
-                                    </div>
-
-                                    <!-- form data yang ditampilkan -->
-                                    <div class="input-group mb-3">
-                                        <div class="input-group">
-                                            <input type="text" name="link" class="form-control" placeholder="Masukkan Tautan">
-                                        </div>
-                                        @error('link') <p class="m-0 p-0 text text-danger"> {{ $message }}</p>@enderror
-                                    </div>
-                                    
-                                    <div class="input-group mb-3">
-                                        <div class="input-group">
-                                            <input type="text" name="code" class="form-control" placeholder="Masukkan Tautan Kustom (Opsional)">
-                                        </div>
-                                        @error('code') <p class="m-0 p-0 text text-danger"> {{ $message }}</p>@enderror
-                                    </div>
-
-                                    <div class="input-group mb-3">
-                                        <input type="text" name="judul" class="form-control" placeholder="Masukkan Judul Tautan (Opsional)">
-
-                                        <div class="input-group-addon">
-                                            <button class="btn btn-success">Generate Shorten Link</button>
-                                        </div>
-                                    </div>
-                                    </form>
-                                </div>
-                            </div>
-
-
-
-
-                        </div>
+                <div class="card-header">
+                    <h1>Form Pemendek Tautan</h1>
+                </div>
+                <div class="card-body">
+                  <form method="post" action="{{ route('generate.shorten.link.post') }}">
+                    @csrf
+                    <!-- form data yang disembunyikan -->
+                    <div class="input-group mb-3">
+                      <input type="hidden" name="user_id" class="form-control" value="{{ Auth::user()->id }}">
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<section class="section" id="schedule">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 offset-lg-3">
-                <div class="section-heading dark-bg">
-                    <h2>Tabel <em>Tautan Pendek</em></h2>
-                    <img src="assets/images/line-dec.png" alt="">
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-10 offset-lg-1">
-                <div class="schedule-table filtering">
-                    <table>
-                        <thead>
-                            <style>
-                                tr{
-                                    color: white;
-                                }
-                            </style>
-                            <tr>
-                                <th>Judul</th>
-                                <th>Short Link</th>
-                                <th>Link</th>
-                                <th></th>
-                            </tr>
-
-                        </thead>
-                        <tbody>
-
-
-                            @php
-                            $dataFound = false;
-                        @endphp
-                        
-                        @foreach ($links as $row)
-                            @if (Auth::user()->id == $row->user_id)
-                                @php
-                                    $dataFound = true;
-                                @endphp
-                                <tr>
-                                    <td>{{ $row->judul }}</td>
-                                    <td class="kode"><a href="{{ route('shorten.link', $row->code) }}" target="_blank">{{ route('shorten.link', $row->code) }}</a></td>
-                                    <td>{{ $row->link }}</td>
-                                    <td>
-                                        <button class="btn btn-primary copy-button" onclick="copyLink('{{ route('shorten.link', $row->code) }}')">Salin</button>
-                                        <a href="{{ route('user.ubah',['id' => $row->id]) }}">
-                                        <button class="btn btn-success">
-                                            Edit
-                                            </button>
-                                        </a>                               
-                                        <a href="#">
-                                            <button class="btn btn-danger" onclick="hapus({{ $row->id }}, '{{ $row->judul }}')">hapus</button>
-                                          </a>
-                                          
-
-                                          
-
-                                    </td>
-                                </tr>
-                            @endif
-                        @endforeach
-                        
-                        @if (!$dataFound)
-                            <tr>
-                                <td colspan="4">
-                                    data kosong
-                                </td>
-                            </tr>
-                        @endif
-                        
-
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- END CONTENT -->
-
-
-<style>
-    .sponsor {
-        height: auto;
-        width: 100%;
-        background-color: aqua;
-    }
-    .sp_logo {
-        width: 100%;
-        height: auto;
-    }
-</style>
-
-<div class="sponsor">
-    <img src="img/sponsorti.jpg" class="sp_logo">
-</div>
-
-
-                <!-- ***** Features Item Start ***** -->
-                <section class="section container" id="features">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-6 offset-lg-3">
-
-                                <div class="section-heading">
-                                    <h2>Halaman <em>Bantuan</em></h2>
-                                    <img src="tamplate/training-studio-1.0.0/assets/images/icon-line.png" alt="waves">
-                                    <p>ini adalah halaman bantuan, jika anda kesulitan dalam menggunakan fitur di website ini, anda dapat mengikuti langkah-langkah dibawah.</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <ul class="features-items">
-                                    <li class="feature-item">
-                                        <div class="left-icon">
-                                            <img src="tamplate/training-studio-1.0.0/assets/images/icon-person.png" alt="First One">
-                                        </div>
-                                        <div class="right-content">
-                                            <h4>1. Buat Akun</h4>
-                                            <p>Untuk memulai, anda harus memiliki akun terlebih dahulu. Anda dapat membuat akun dengan cara menekan tombol Daftar pada <a href="#top" class="scroll-to-section active">Halaman Utama</a>. setelah memiliki akun, anda dapat masuk menggunakan akun tersebut dan menggunakan fitur yang kami sediakan.</p>
-                                        </div>
-                                    </li>
-                                    <li class="feature-item">
-                                        <div class="left-icon">
-                                            <img src="tamplate/training-studio-1.0.0/assets/images/icon-link.png" alt="second one">
-                                        </div>
-                                        <div class="right-content">
-                                            <h4>2. Ringkas Tautan Anda</h4>
-                                            <p>Anda dapat meringkas Tautan yang anda miliki, menjadi tautan yang lebih pendek. selain itu tautan anda juga bisa dinamakan sesuai keinginan anda. Anda cukup memasukkan judul, nama yang akan anda masukkan untuk tautan baru, dan tauran asli yang anda miliki pada form yang sudah kami sediakan.</p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-lg-6">
-                                <ul class="features-items">
-                                    <li class="feature-item">
-                                        <div class="left-icon">
-                                            <img src="tamplate/training-studio-1.0.0/assets/images/icon-share.png" alt="fourth muscle">
-                                        </div>
-                                        <div class="right-content">
-                                            <h4>3. Bagikan</h4>
-                                            <p>Anda dapat membagikan tautan yang sudah dipendekkan dengan cara yang sangat mudah. anda hanya perlu menekan tombol salin yang ada disebelah kanan tabel. setelahnya tautan akan tersalin ke clipboard anda secara otomatis.</p>
-                                        </div>
-                                    </li>
-                                    <li class="feature-item">
-                                        <div class="left-icon">
-                                            <img src="tamplate/training-studio-1.0.0/assets/images/icon-friend.png" alt="training fifth">
-                                        </div>
-                                        <div class="right-content">
-                                            <h4>4. Tersebar</h4>
-                                            <p>Tautan anda dapat disebarluaskan dengan mengirimkan tautan tersebut pada siapa saja dan kemana saja.</p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                    <div class="input-group mb-3">
+                      <input type="hidden" name="user_username" class="form-control" value="{{ Auth::user()->username }}">
                     </div>
-                </section>
-                <!-- ***** Features Item End ***** -->
-        
-        <!-- ***** Footer Start ***** -->
-        <footer>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <p>Copyright &copy; 2023 Handapi
-                        
-                        - Designed by Kelompok 29<br>
-
-                    Project PBL di <a rel="" href="https://poliban.ac.id/" class="tm-text-link" target="_blank">Politeknin Negeri Banjarmaisn</a>
                     
-                    </p>
-                        
-                        <!-- You shall support us a little via PayPal to info@templatemo.com -->
-                        
+                    @if (session('success'))
+                    <div class="alert alert-success" role="alert">
+                      {{ session('success') }}
                     </div>
+                  @endif
+                    <!-- form data yang ditampilkan -->
+                    <div class="input-group mb-3">
+                        <div class="input-group">
+                            <input type="text" name="link" class="form-control" placeholder="Masukkan Tautan">
+                        </div>
+                        @error('link') <p class="m-0 p-0 text text-danger"> {{ $message }}</p>@enderror
+                    </div>
+                    
+                    <div class="input-group mb-3">
+                        <div class="input-group">
+                            <input type="text" name="code" class="form-control" placeholder="Masukkan Tautan Kustom (Opsional)">
+                        </div>
+                        @error('code') <p class="m-0 p-0 text text-danger"> {{ $message }}</p>@enderror
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <input type="text" name="judul" class="form-control" placeholder="Masukkan Judul Tautan (Opsional)">
+
+                        <div class="input-group-addon">
+                            <button class="btn btn-success">Generate Shorten Link</button>
+                        </div>
+                    </div>
+                    </form>
                 </div>
             </div>
-        </footer>
-        <!-- ***** Footer Start End***** -->
+            <style>
+                .sponsor {
+                    height: auto;
+                    width: 100%;
+                    background-color: aqua;
+                }
+                .sp_logo {
+                    width: 100%;
+                    height: auto;
+                }
+            </style>
+            
+            <div class="sponsor mb-3">
+                <img src="img/sponsorti.jpg" class="sp_logo">
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Tabel Tautan</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <?php
+                    use App\Models\Shortlink;
+                    $links = ShortLink::latest()->get();?>
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                    <tr>
+                        <th>Judul</th>
+                        <th>Short Link</th>
+                        <th>Link</th>
+                        <th></th>
+                    </tr>
+
+                </thead>
+                <tbody>
 
 
-        <!-- *** SCRIPT *** -->
-        <!-- SCRIPT UNTUK ANIMASI -->
-            <!-- jQuery -->
-            <script src="tamplate/training-studio-1.0.0/assets/js/jquery-2.1.0.min.js"></script>
-            
-            <!-- Bootstrap -->
-            <script src="tamplate/training-studio-1.0.0/assets/js/popper.js"></script>
-            <script src="tamplate/training-studio-1.0.0/assets/js/bootstrap.min.js"></script>
-            
-            <!-- Plugins -->
-            <script src="tamplate/training-studio-1.0.0/assets/js/waypoints.min.js"></script>
-            <script src="tamplate/training-studio-1.0.0/assets/js/scrollreveal.min.js"></script>
-            <script src="tamplate/training-studio-1.0.0/assets/js/jquery.counterup.min.js"></script>
-            <script src="tamplate/training-studio-1.0.0/assets/js/imgfix.min.js"></script> 
-            <script src="tamplate/training-studio-1.0.0/assets/js/mixitup.js"></script> 
-            <script src="tamplate/training-studio-1.0.0/assets/js/accordions.js"></script>
-            
-            <!-- Global Init -->
-            <script src="tamplate/training-studio-1.0.0/assets/js/custom.js"></script>
-        <!-- *** END SCRIPT *** -->
+                    @php
+                    $dataFound = false;
+                @endphp
+                
+                @foreach ($links as $row)
+                    @if (Auth::user()->id == $row->user_id)
+                        @php
+                            $dataFound = true;
+                        @endphp
+                        <tr>
+                            <td>{{ $row->judul }}</td>
+                            <td class="kode"><a href="{{ route('shorten.link', $row->code) }}" target="_blank">{{ route('shorten.link', $row->code) }}</a></td>
+                            <td>{{ $row->link }}</td>
+                            <td>
+                                <button class="btn btn-primary copy-button" onclick="copyLink('{{ route('shorten.link', $row->code) }}')">Salin</button>
+                                <a href="{{ route('user.ubah',['id' => $row->id]) }}">
+                                <button class="btn btn-success">
+                                    Edit
+                                    </button>
+                                </a>                               
+                                <a href="#">
+                                    <button class="btn btn-danger" onclick="hapus({{ $row->id }}, '{{ $row->judul }}')">hapus</button>
+                                  </a>
+                                  
 
+                                  
+
+                            </td>
+                        </tr>
+                    @endif
+                @endforeach
+                
+                @if (!$dataFound)
+                    <tr>
+                        <td colspan="4">
+                            data kosong
+                        </td>
+                    </tr>
+                @endif
+                
+
+                </tbody>
+                  <tfoot>
+                  <tr>
+                    <th>Judul</th>
+                        <th>Short Link</th>
+                        <th>Link</th>
+                        <th></th>
+                  </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+      <b>Version</b> 3.2.0
+    </div>
+    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="AdminLTE-3.2.0/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="AdminLTE-3.2.0/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- DataTables  & Plugins -->
+<script src="AdminLTE-3.2.0/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="AdminLTE-3.2.0/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="AdminLTE-3.2.0/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="AdminLTE-3.2.0/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="AdminLTE-3.2.0/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="AdminLTE-3.2.0/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="AdminLTE-3.2.0/plugins/jszip/jszip.min.js"></script>
+<script src="AdminLTE-3.2.0/plugins/pdfmake/pdfmake.min.js"></script>
+<script src="AdminLTE-3.2.0/plugins/pdfmake/vfs_fonts.js"></script>
+<script src="AdminLTE-3.2.0/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="AdminLTE-3.2.0/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="AdminLTE-3.2.0/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<!-- AdminLTE App -->
+<script src="AdminLTE-3.2.0/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="AdminLTE-3.2.0/dist/js/demo.js"></script>
+<!-- Page specific script -->
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
         <!-- Button Salin -->
         <script>
-            function copyLink(link) {
-                var dummy = document.createElement("textarea");
-                document.body.appendChild(dummy);
-                dummy.value = link;
-                dummy.select();
-                document.execCommand("copy");
-                document.body.removeChild(dummy);
-                alert("Link berhasil disalin!");
-            }
-        </script>
-        
-        
+          function copyLink(link) {
+              var dummy = document.createElement("textarea");
+              document.body.appendChild(dummy);
+              dummy.value = link;
+              dummy.select();
+              document.execCommand("copy");
+              document.body.removeChild(dummy);
+              alert("Link berhasil disalin!");
+          }
+      </script>
+      
+      
 
-                                          <!-- SCRIPT Hapus -->
-                                          <script>
-                                            function hapus(id, judul) {
-                                            var urlhapus = "/delete"+id;
-                                            var urlbalik = "#top";
-                                              var konfirmasi = confirm("Apakah Anda yakin ingin menghapus data "+judul+"?");
-                                          
-                                              if (konfirmasi) {
-                                                window.location.href = urlhapus;
-                                            } else {
-                                                window.location.href = urlbalik;
-                                              }
+                                        <!-- SCRIPT Hapus -->
+                                        <script>
+                                          function hapus(id, judul) {
+                                          var urlhapus = "/delete"+id;
+                                          var urlbalik = "#top";
+                                            var konfirmasi = confirm("Apakah Anda yakin ingin menghapus data "+judul+"?");
+                                        
+                                            if (konfirmasi) {
+                                              window.location.href = urlhapus;
+                                          } else {
+                                              window.location.href = urlbalik;
                                             }
-                                          </script>
-@endsection
+                                          }
+                                        </script>
+</body>
+</html>
