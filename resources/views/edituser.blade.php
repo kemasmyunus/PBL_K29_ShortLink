@@ -9,7 +9,8 @@
         <link rel="stylesheet" type="text/css" href="tamplate/training-studio-1.0.0/assets/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="tamplate/training-studio-1.0.0/assets/css/font-awesome.css">
         <link rel="stylesheet" href="tamplate/training-studio-1.0.0/assets/css/templatemo-training-studio.css">
-        <title>Handapi | Edit User</title>
+        <title>Handapi | Edit Profil</title>
+        <link rel="website icon" type="png" href="img/hlogo.png">
 
 
     <!-- *** END LINK *** -->
@@ -25,9 +26,10 @@
 
             <style>
                 .kotak{
-                    margin: 5rem auto;
-                    width: 50%;
-                    padding: 10px;  
+                    margin: 0rem auto 2rem ;
+                    width: 90%;
+                    max-width: 500px;
+                    padding: 20px;  
                 }
 
                 .bg {
@@ -75,7 +77,7 @@
                         
                         </form>
                         <div class="input-group-addon">
-                            <a href="/home">
+                            <a href="/public_html/public/home">
                                 <button class="btn btn-danger">Batal</button>
                             </a>
                         </div>

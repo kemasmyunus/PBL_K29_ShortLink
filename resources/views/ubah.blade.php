@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="tamplate/training-studio-1.0.0/assets/css/templatemo-training-studio.css">
 
         <title>Handapi | Edit Tautan</title>
+        <link rel="website icon" type="png" href="img/hlogo.png">
 
     <!-- *** END LINK *** -->
     

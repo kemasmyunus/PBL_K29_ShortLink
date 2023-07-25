@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="tamplate/training-studio-1.0.0/assets/css/templatemo-training-studio.css">
     <!-- *** END LINK *** -->
     <title>Handapi | Lupa Password</title>
+    <link rel="website icon" type="png" href="img/hlogo.png">
 
 </head> 
 <body>

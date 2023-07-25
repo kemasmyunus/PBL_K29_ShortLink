@@ -10,6 +10,8 @@
 
     
     <title>Handapi | Masuk</title>
+    <link rel="website icon" type="png" href="img/hlogo.png">
+  
     
         <!-- *** LINK *** -->
             <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
@@ -66,23 +68,26 @@
 
         <div id="top">
             <style>
-                .kotak{
+                .kotak {
                     margin: 5rem auto;
-                    width: 50%;
-                    padding: 10px;  
+                    width: 90%;
+                    max-width: 500px;
+                    padding: 20px;  
                 }
-
+            
                 .bg {
                     /* Full height */                              
                     /* Center and scale the image nicely */
                     background-size: cover;
                     widows: 300px;
-                  }
-                  .card{
+                }
+            
+                .card {
                     margin: 13px;
-                    padding: 30px
-                  }
+                    padding: 20px;
+                }
             </style>
+            
             <div class="bg">
                 <div class="kotak">                     
                     <div class="card">

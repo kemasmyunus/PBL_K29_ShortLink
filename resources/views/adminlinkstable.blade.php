@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | DataTables</title>
+  <title>Handapi | Home | Links Table</title>
+  <link rel="website icon" type="png" href="img/hlogo.png">
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -36,18 +37,19 @@
       <img src="./img/hlogo.png" alt="AdminLTE Logo" class="brand-image elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Handapi</span>
     </a>
-    <!-- Sidebar -->
+          <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user (optional) -->
-
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
           <img src="AdminLTE-3.2.0/dist/img/avatar6.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a class="nav-link"> {{ Auth::user()->username }}</a>
+          <a href="#" class="d-block">{{ Auth::user()->username }}</a>
         </div>
       </div>
+
+
 
 
       <!-- SidebarSearch Form -->
@@ -86,6 +88,12 @@
                     <a class="nav-link" href="{{ route('ubahpassword',['user_id' => Auth::user()->user_id]) }}">
                       <i class="far fa-circle nav-icon"></i>
                       {{ "Ubah Password" }}
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" onclick="hapusakun({{ Auth::user()->user_id }})">
+                      <i class="far fa-circle nav-icon"></i>
+                      {{ "Hapus Akun" }}
                     </a>
                   </li>
                   <li class="nav-item">
@@ -313,5 +321,19 @@
                                     }
                                   }
                                 </script>
+                                                                        <!-- SCRIPT Hapus Akun -->
+                                                                        <script>
+                                                                          function hapusakun(id) {
+                                                                          var urlhapus = "/hapusakun"+id;
+                                                                          var urlbalik = "#top";
+                                                                            var konfirmasi = confirm("Apakah Anda yakin ingin menghapus akun Anda?");
+                                                                        
+                                                                            if (konfirmasi) {
+                                                                              window.location.href = urlhapus;
+                                                                          } else {
+                                                                              window.location.href = urlbalik;
+                                                                            }
+                                                                          }
+                                                                        </script>
 </body>
 </html>

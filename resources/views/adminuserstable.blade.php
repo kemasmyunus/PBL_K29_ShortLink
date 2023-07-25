@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | DataTables</title>
+  <title>Handapi | Home | Users Table</title>
+  <link rel="website icon" type="png" href="img/hlogo.png">
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -110,7 +111,7 @@
                 </ul>
               </li>
                <li class="nav-item">
-                <a href="adminuserstable" class="nav-link">
+                <a href="adminuserstable" class="nav-link active">
                   <i class="nav-icon fas fa-user"></i>
                   <p>
                     Users
@@ -119,7 +120,7 @@
               </li>
     
               <li class="nav-item">
-                <a href="adminlinkstable" class="nav-link active">
+                <a href="adminlinkstable" class="nav-link">
                   <i class="nav-icon fas fa-link"></i>
                   <p>
                     Links
@@ -202,6 +203,7 @@
                     <th>User Id</th>
                     <th>Username</th>
                     <th>Full name</th>
+                    <th>Role</th>
                   </tr>
                   </tfoot>
                 </table>
@@ -287,5 +289,6 @@
                                             }
                                           }
                                         </script>
+                                        
 </body>
 </html>
