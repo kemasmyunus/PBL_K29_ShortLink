@@ -310,7 +310,7 @@
                                 <!-- SCRIPT Hapus -->
                                 <script>
                                   function hapus(id, judul) {
-                                  var urlhapus = "/delete"+id;
+                                  var urlhapus = "/admindelete"+id;
                                   var urlbalik = "/adminlinkstable";
                                     var konfirmasi = confirm("Apakah Anda yakin ingin menghapus data "+judul+"?");
                                 

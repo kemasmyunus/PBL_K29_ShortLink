@@ -141,6 +141,6 @@ class ShortLinkController extends Controller
             $hapus->delete();
         }
 
-        return redirect('adminhome')->withSuccess('Tautan Pendek Berhasil Dihapus');
+        return redirect('adminlinkstable')->withSuccess('Tautan Pendek Berhasil Dihapus');
     }
 }

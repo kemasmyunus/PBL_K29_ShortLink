@@ -77,7 +77,7 @@
                         
                         </form>
                         <div class="input-group-addon">
-                            <a href="/public_html/public/home">
+                            <a href="{{ url()->previous() }}">
                                 <button class="btn btn-danger">Batal</button>
                             </a>
                         </div>

@@ -100,7 +100,7 @@
             @error('link') <p class="m-0 p-0 text text-danger"> {{ $message }}</p>@enderror
             </form>
             <div class="input-group-addon">
-                <a href="/home">
+                <a href="{{ url()->previous() }}">
                     <button class="btn btn-danger">Batal</button>
                 </a>
             </div>
