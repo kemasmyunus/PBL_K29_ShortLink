@@ -33,7 +33,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="AdminLTE-3.2.0/index3.html" class="brand-link">
+    <a href="#" class="brand-link">
       <img src="./img/hlogo.png" alt="AdminLTE Logo" class="brand-image elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Handapi</span>
     </a>
@@ -112,7 +112,7 @@
               </li>
     
               <li class="nav-item">
-                <a href="adminlinkstable" class="nav-link active">
+                <a href="#" class="nav-link active">
                   <i class="nav-icon fas fa-link"></i>
                   <p>
                     Links
@@ -230,7 +230,7 @@
               <!-- /.card-header -->
               <div class="card-body">
                 <?php
-                    use App\Models\Shortlink;
+                    use App\Models\ShortLink;
                     $links = ShortLink::latest()->get();?>
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
@@ -266,8 +266,8 @@
                                     </button>
                                 </a>                               
                                 <a href="#">
-                                    <button class="btn btn-danger" onclick="hapus({{ $row->user_id }}, '{{ $row->judul }}')">hapus</button>
-                                  </a>
+                                  <button class="btn btn-danger" onclick="hapus({{ $row->link_id }}, '{{ $row->judul }}')">hapus</button>
+                                </a>
                                   
 
                                   
@@ -345,7 +345,6 @@
 <!-- AdminLTE App -->
 <script src="AdminLTE-3.2.0/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="AdminLTE-3.2.0/dist/js/demo.js"></script>
 <!-- Page specific script -->
 <script>
   $(function () {
@@ -376,28 +375,25 @@
               alert("Link berhasil disalin!");
           }
       </script>
-      
-      
-
-                                        <!-- SCRIPT Hapus -->
-                                        <script>
-                                          function hapus(id, judul) {
-                                          var urlhapus = "/delete"+id;
-                                          var urlbalik = "#top";
-                                            var konfirmasi = confirm("Apakah Anda yakin ingin menghapus data "+judul+"?");
-                                        
-                                            if (konfirmasi) {
-                                              window.location.href = urlhapus;
-                                          } else {
-                                              window.location.href = urlbalik;
-                                            }
-                                          }
-                                        </script>
+                                <!-- SCRIPT Hapus -->
+                                <script>
+                                  function hapus(id, judul) {
+                                  var urlhapus = "/public_html/delete"+id;
+                                  var urlbalik = "#";
+                                    var konfirmasi = confirm("Apakah Anda yakin ingin menghapus data "+judul+"?");
+                                
+                                    if (konfirmasi) {
+                                      window.location.href = urlhapus;
+                                  } else {
+                                      window.location.href = urlbalik;
+                                    }
+                                  }
+                                </script>
 
                                         <!-- SCRIPT Hapus Akun -->
                                         <script>
                                           function hapusakun(id) {
-                                          var urlhapus = "/hapusakun"+id;
+                                          var urlhapus = "/public_html/hapusakun"+id;
                                           var urlbalik = "#top";
                                             var konfirmasi = confirm("Apakah Anda yakin ingin menghapus akun Anda?");
                                         

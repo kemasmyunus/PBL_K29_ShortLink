@@ -25,9 +25,10 @@
 
             <style>
                 .kotak{
-                    margin: 5rem auto;
-                    width: 50%;
-                    padding: 10px;  
+                    margin: 0rem auto 2rem ;
+                    width: 90%;
+                    max-width: 500px;
+                    padding: 20px;  
                 }
 
                 .bg {

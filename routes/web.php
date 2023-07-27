@@ -32,7 +32,6 @@ Route::get('/blank', function () {
 Route::get('/ubah{link_id}',[ShortLinkController::class, 'ubah'])->name('user.ubah');
 Route::put('/update{link_id}',[ShortLinkController::class, 'update'])->name('user.update');
 Route::get('/delete{link_id}',[ShortLinkController::class, 'delete'])->name('user.delete');
-Route::get('/admindelete{link_id}',[ShortLinkController::class, 'admindelete'])->name('admin.delete');
 //ubah password
 Route::get('/passwordubah{user_id}',[EditUserController::class, 'ubahpassword'])->name('ubahpassword');
 Route::put('/passwordupdate{user_id}',[EditUserController::class, 'updatepassword'])->name('updatepassword');
@@ -54,14 +53,23 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/home',[ShortLinkController::class, 'index']);
 Route::post('/home',[ShortLinkController::class, 'store'])->name('generate.shorten.link.post');
 
-// admin
-Route::get('/adminlinkstable', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
 Route::get('/adminlinkstable', function () {
-    return view('adminlinkstable');
-});
+    if (auth()->user()->is_admin === 1) {
+        return view('adminlinkstable');
+    } else {
+        return redirect('/home')->with('error', 'Anda tidak memiliki hak akses');
+    }
+})->middleware('auth');
+
 Route::get('/adminuserstable', function () {
-    return view('adminuserstable');
-});
+    if (auth()->user()->is_admin === 1) {
+        return view('adminuserstable');
+    } else {
+        return redirect('/home')->with('error', 'Anda tidak memiliki hak akses');
+    }
+})->middleware('auth');
+
+Route::get('/home', [HomeController::class, 'index']);
 
 // code
 Route::get('{code}', [ShortLinkController::class, 'shortenlink'])->name('shorten.link');

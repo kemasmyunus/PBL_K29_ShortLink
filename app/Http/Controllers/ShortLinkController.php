@@ -121,26 +121,18 @@ class ShortLinkController extends Controller
         }
 
         // memasukkan data baru kedalam model ShortLink dengan $input
-        ShortLink::whereId($link_id)->update($input);
+        $link = ShortLink::findOrFail($link_id); // Mencari user berdasarkan ID, jika tidak ditemukan, lempar exception
+        $link->update($input); 
         // kembali ke alamat "home" dengan pesan sukses
         return redirect('home')->withSuccess('Tautan Pendek Berhasil Diubah');
     }
-
+    
     public function delete(Request $request, $link_id){
         $hapus = ShortLink::find($link_id);
         if($hapus){
             $hapus->delete();
         }
 
-        return redirect('home')->withSuccess('Tautan Pendek Berhasil Dihapus');
-    }
-    
-    public function admindelete(Request $request, $link_id){
-        $hapus = ShortLink::find($link_id);
-        if($hapus){
-            $hapus->delete();
-        }
-
-        return redirect('adminlinkstable')->withSuccess('Tautan Pendek Berhasil Dihapus');
+        return redirect()->back()->withSuccess('Tautan Pendek Berhasil Dihapus');
     }
 }

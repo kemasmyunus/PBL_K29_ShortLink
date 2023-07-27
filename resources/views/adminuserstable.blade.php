@@ -33,7 +33,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="AdminLTE-3.2.0/index3.html" class="brand-link">
+    <a href="#" class="brand-link">
       <img src="./img/hlogo.png" alt="AdminLTE Logo" class="brand-image elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Handapi</span>
     </a>
@@ -256,7 +256,6 @@
 <!-- AdminLTE App -->
 <script src="AdminLTE-3.2.0/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="AdminLTE-3.2.0/dist/js/demo.js"></script>
 <!-- Page specific script -->
 <script>
   $(function () {
@@ -278,7 +277,7 @@
                                         <!-- SCRIPT Hapus Akun -->
                                         <script>
                                           function hapusakun(id) {
-                                          var urlhapus = "/hapusakun"+id;
+                                          var urlhapus = "/public_html/hapusakun"+id;
                                           var urlbalik = "#top";
                                             var konfirmasi = confirm("Apakah Anda yakin ingin menghapus akun Anda?");
                                         

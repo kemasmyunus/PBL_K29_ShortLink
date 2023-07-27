@@ -1,12 +1,12 @@
+<html>
 
     <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- *** LINK *** -->
         <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
             
-    <!-- *** END LINK *** -->
-    
-</head> 
-    
+    <!-- *** END LINK *** -->   
         <!-- *** LINK *** -->
         <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
             
@@ -17,7 +17,7 @@
     <!-- *** END LINK *** -->
     <title>Handapi | Lupa Password</title>
     <link rel="website icon" type="png" href="img/hlogo.png">
-
+    
 </head> 
 <body>
 
@@ -65,11 +65,12 @@
                         @endif
                         <style>
                             .kotak{
-                                margin: 5rem auto;
-                                width: 50%;
-                                padding: 10px;  
+                                margin: 5rem auto 2rem ;
+                                width: 90%;
+                                max-width: 500px;
+                                padding: 20px;  
                             }
-
+            
                             .bg {
                                 /* Full height */                              
                                 /* Center and scale the image nicely */
@@ -120,11 +121,11 @@
                                     </div>
                                     
                                     </form>
-                                    <div class="input-group-addon">
-                                        <a href="/">
-                                            <button class="btn btn-danger">Batal</button>
-                                        </a>
-                                    </div>
+            <div class="input-group-addon">
+                <a href="{{ url()->previous() }}">
+                    <button class="btn btn-danger">Batal</button>
+                </a>
+            </div>
                                     
                                     <!-- End Form -->
                                 </div>
@@ -255,3 +256,4 @@
             <!-- Global Init -->
             <script src="tamplate/training-studio-1.0.0/assets/js/custom.js"></script>
         <!-- *** END SCRIPT *** -->
+</html>

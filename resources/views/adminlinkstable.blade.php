@@ -29,15 +29,14 @@
     </ul>
   </nav>
   <!-- /.navbar -->
-
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="AdminLTE-3.2.0/index3.html" class="brand-link">
+    <a href="#" class="brand-link">
       <img src="./img/hlogo.png" alt="AdminLTE Logo" class="brand-image elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Handapi</span>
     </a>
-          <!-- Sidebar -->
+    <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
@@ -48,10 +47,6 @@
           <a href="#" class="d-block">{{ Auth::user()->username }}</a>
         </div>
       </div>
-
-
-
-
       <!-- SidebarSearch Form -->
       <div class="form-inline">
         <div class="input-group" data-widget="sidebar-search">
@@ -63,70 +58,67 @@
           </div>
         </div>
       </div>
-
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-               <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-user"></i>
-                  <p>
-                    Dashboard
-                    <i class="right fas fa-angle-left"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a class="nav-link" href="{{ route('editprofil',['user_id' => Auth::user()->user_id]) }}">
-                      <i class="far fa-circle nav-icon"></i>
-                      {{ "Ubah Profil" }}
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{{ route('ubahpassword',['user_id' => Auth::user()->user_id]) }}">
-                      <i class="far fa-circle nav-icon"></i>
-                      {{ "Ubah Password" }}
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" onclick="hapusakun({{ Auth::user()->user_id }})">
-                      <i class="far fa-circle nav-icon"></i>
-                      {{ "Hapus Akun" }}
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{{ route('logout') }}"
-                    onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();">
-                    <i class="far fa-circle nav-icon"></i>
-
-                     {{ __('Logout') }}
-                 </a>
-                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                     @csrf
-                 </form>
-                  </li>
-                </ul>
-              </li>
-               <li class="nav-item">
-                <a href="adminuserstable" class="nav-link">
-                  <i class="nav-icon fas fa-user"></i>
-                  <p>
-                    Users
-                  </p>
-                </a>
-              </li>
-    
-              <li class="nav-item">
-                <a href="adminlinkstable" class="nav-link active">
-                  <i class="nav-icon fas fa-link"></i>
-                  <p>
-                    Links
-                  </p>
-                </a>
-              </li>
+          with font-awesome or any other icon font library -->
+          <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-user"></i>
+            <p>
+              Dashboard
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('editprofil',['user_id' => Auth::user()->user_id]) }}">
+                <i class="far fa-circle nav-icon"></i>
+                {{ "Ubah Profil" }}
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('ubahpassword',['user_id' => Auth::user()->user_id]) }}">
+                <i class="far fa-circle nav-icon"></i>
+                {{ "Ubah Password" }}
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" onclick="hapusakun({{ Auth::user()->user_id }})">
+                <i class="far fa-circle nav-icon"></i>
+                {{ "Hapus Akun" }}
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('logout') }}"
+              onclick="event.preventDefault();
+              document.getElementById('logout-form').submit();">
+              <i class="far fa-circle nav-icon"></i>
+                {{ __('Logout') }}
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
+            </li>
+          </ul>
+          </li>
+            <li class="nav-item">
+            <a href="adminuserstable" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                Users
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="adminlinkstable" class="nav-link active">
+              <i class="nav-icon fas fa-link"></i>
+              <p>
+                Links
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -158,70 +150,70 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
-
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">DataTable with default features</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
+                @if (session('success'))
+                <div class="alert alert-success" role="alert">
+                  {{ session('success') }}
+                </div>
+              @endif
                 <?php
-                    use App\Models\Shortlink;
+                    use App\Models\ShortLink;
                     $links = ShortLink::latest()->get();?>
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                     <tr>
-                        <th>Id</th>
-                        <th>Username</th>
-                        <th>Judul</th>
-                        <th>Short Link</th>
-                        <th>Link</th>
-                        <th></th>
+                      <th>Id</th>
+                      <th>Username</th>
+                      <th>Judul</th>
+                      <th>Short Link</th>
+                      <th>Link</th>
+                      <th></th>
                     </tr>
-            
-                </thead>
-                <tbody>
+                  </thead>
+                  <tbody>
                     @php
                     $dataFound = false;
-                @endphp
-                @foreach ($links as $row)
-                        @php
-                            $dataFound = true;
-                        @endphp
-                        <tr>
-                            <td>{{ $row->link_id }}</td>
-                            <td>{{ $row->user_username }}</td>
-                            <td>{{ $row->judul }}</td>
-                            <td class="kode"><a href="{{ route('shorten.link', $row->code) }}" target="_blank">{{ route('shorten.link', $row->code) }}</a></td>
-                            <td>{{ $row->link }}</td>
-                            <td>
-                                <button class="btn btn-primary copy-button" onclick="copyLink('{{ route('shorten.link', $row->code) }}')">Salin</button>                              
-                                <a href="#">
-                                    <button class="btn btn-danger" onclick="hapus({{ $row->link_id }}, '{{ $row->judul }}')">hapus</button>
-                                  </a>
-                            </td>
-                        </tr>
-                @endforeach
-                
-                @if (!$dataFound)
-                    <tr>
+                    @endphp
+                    @foreach ($links as $row)
+                    @php
+                        $dataFound = true;
+                    @endphp
+                      <tr>
+                          <td>{{ $row->link_id }}</td>
+                          <td>{{ $row->user_username }}</td>
+                          <td>{{ $row->judul }}</td>
+                          <td class="kode"><a href="{{ route('shorten.link', $row->code) }}" target="_blank">{{ route('shorten.link', $row->code) }}</a></td>
+                          <td>{{ $row->link }}</td>
+                          <td>
+                              <button class="btn btn-primary copy-button" onclick="copyLink('{{ route('shorten.link', $row->code) }}')">Salin</button>                              
+                              <a href="#">
+                                <button class="btn btn-danger" onclick="hapus({{ $row->link_id }}, '{{ $row->judul }}')">hapus</button>
+                              </a>
+                          </td>
+                      </tr>
+                    @endforeach
+                    @if (!$dataFound)
+                      <tr>
                         <td colspan="6">
-                            data kosong
+                          data kosong
                         </td>
-                    </tr>
-                @endif
-                
-            
-                </tbody>
+                      </tr>
+                    @endif
+                  </tbody>
                   <tfoot>
-                  <tr>
-                    <th>Id</th>
-                        <th>Username</th>
-                        <th>Judul</th>
-                        <th>Short Link</th>
-                        <th>Link</th>
-                        <th></th>
-                  </tr>
+                    <tr>
+                      <th>Id</th>
+                      <th>Username</th>
+                      <th>Judul</th>
+                      <th>Short Link</th>
+                      <th>Link</th>
+                      <th></th>
+                    </tr>
                   </tfoot>
                 </table>
               </div>
@@ -244,7 +236,6 @@
     </div>
     <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
   </footer>
-
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
@@ -273,7 +264,6 @@
 <!-- AdminLTE App -->
 <script src="AdminLTE-3.2.0/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="AdminLTE-3.2.0/dist/js/demo.js"></script>
 <!-- Page specific script -->
 <script>
   $(function () {
@@ -310,8 +300,8 @@
                                 <!-- SCRIPT Hapus -->
                                 <script>
                                   function hapus(id, judul) {
-                                  var urlhapus = "/admindelete"+id;
-                                  var urlbalik = "/adminlinkstable";
+                                  var urlhapus = "/public_html/delete"+id;
+                                  var urlbalik = "#";
                                     var konfirmasi = confirm("Apakah Anda yakin ingin menghapus data "+judul+"?");
                                 
                                     if (konfirmasi) {
@@ -324,7 +314,7 @@
                                                                         <!-- SCRIPT Hapus Akun -->
                                                                         <script>
                                                                           function hapusakun(id) {
-                                                                          var urlhapus = "/hapusakun"+id;
+                                                                          var urlhapus = "/public_html/hapusakun"+id;
                                                                           var urlbalik = "#top";
                                                                             var konfirmasi = confirm("Apakah Anda yakin ingin menghapus akun Anda?");
                                                                         
